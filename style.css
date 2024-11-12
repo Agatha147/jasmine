@@ -1,0 +1,21 @@
+body{
+
+    color:lavender; 
+    background-color: black;
+}
+header{
+    border-bottom: solid 2px rgb(159, 123, 207)
+padding:20px
+font-size:32px
+color: whitesmoke
+
+}
+
+section{
+background-color: aliceblue;
+padding-top: 80px;
+padding-bottom: 80px;
+display: flex;
+justify-content: center;
+
+}
