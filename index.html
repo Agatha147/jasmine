@@ -1,123 +1,481 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookVerso • Universo Literário</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
       background-color: #f8f0fb;
       color: #4a148c;
     }
-
     header {
       background: linear-gradient(135deg, #ce93d8, #ba68c8);
-      padding: 30px 20px;
-      text-align: center;
       color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-
     header h1 {
       font-size: 3em;
       margin-bottom: 10px;
     }
-
     header p {
       font-size: 1.2em;
       font-style: italic;
     }
-
     .section-title {
       text-align: center;
-      margin-top: 40px;
+      margin: 50px 20px 20px;
       font-size: 2em;
       color: #6a1b9a;
     }
-
     .categoria-livros {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 20px;
     }
-
     .livro {
       background-color: #ede7f6;
       border-radius: 12px;
       padding: 15px;
-      box-shadow: 0 4px 10px rgba(74, 20, 140, 0.1);
+      box-shadow: 0 4px 10px rgba(74, 20, 140, 0.15);
       transition: transform 0.3s ease;
     }
-
     .livro:hover {
       transform: scale(1.05);
     }
-
     .livro img {
       width: 100%;
+      height: auto;
       border-radius: 8px;
     }
-
     .livro h3 {
-      margin: 10px 0 5px;
-      color: #4a148c;
+      margin-top: 10px;
       font-size: 1.1em;
+      color: #4a148c;
     }
-
     .livro p {
       font-size: 0.95em;
-      line-height: 1.4;
+      line-height: 1.5;
+      margin-top: 8px;
     }
-
     footer {
       background-color: #ce93d8;
-      text-align: center;
-      padding: 15px;
       color: white;
-      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>BookVerso</h1>
-    <p>Seu universo de leitura favorito em tons de magia e inspiração 💜📚</p>
-  </header>
-
+<header>
+  <h1>BookVerso</h1>
+  <p>Bem-vindo ao seu universo literário — 100 livros para sonhar, refletir e se emocionar </p>
+</header>
   <h2 class="section-title">🎩 Clássicos da Literatura</h2>
-  <div class="categoria-livros">
-    <!-- 10 clássicos -->
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/81DFqa5irZL.jpg"><h3>Orgulho e Preconceito</h3><p><strong>Sinopse:</strong> Amor e orgulho em tempos de normas sociais rígidas.</p></div>
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/91MteVr4gkL.jpg"><h3>Dom Quixote</h3><p><strong>Sinopse:</strong> Um cavaleiro sonhador enfrenta gigantes (ou seriam moinhos?).</p></div>
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg"><h3>O Pequeno Príncipe</h3><p><strong>Sinopse:</strong> Uma história sobre o essencial invisível aos olhos.</p></div>
-    <!-- Adicione mais 7 aqui -->
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71xBLRBYOiL.jpg" alt="Orgulho e Preconceito">
+    <h3>Orgulho e Preconceito</h3>
+    <p><strong>Sinopse:</strong> Elizabeth Bennet vive em uma sociedade marcada por convenções e aparências. Quando conhece o reservado Sr. Darcy, ambos precisam enfrentar seus próprios julgamentos para viver um grande amor.</p>
   </div>
-
-  <h2 class="section-title">🧙‍♀️ Fantasia & Aventura</h2>
-  <div class="categoria-livros">
-    <!-- 10 fantasia -->
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/81dQwQlmAXL.jpg"><h3>Harry Potter</h3><p><strong>Sinopse:</strong> Um menino bruxo enfrenta seu destino contra o mal.</p></div>
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg"><h3>As Crônicas de Nárnia</h3><p><strong>Sinopse:</strong> Quatro irmãos descobrem um mundo mágico através de um guarda-roupa.</p></div>
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"><h3>O Hobbit</h3><p><strong>Sinopse:</strong> Bilbo embarca em uma jornada épica com anões e um dragão.</p></div>
-    <!-- Adicione mais 7 aqui -->
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91MteVr4gkL.jpg" alt="Dom Quixote">
+    <h3>Dom Quixote</h3>
+    <p><strong>Sinopse:</strong> Um nobre sonhador decide tornar-se cavaleiro andante. Ao lado de Sancho Pança, enfrenta moinhos de vento e vive aventuras surreais em busca de justiça e honra.</p>
   </div>
-
-  <h2 class="section-title">❤️ Romance & Drama</h2>
-  <div class="categoria-livros">
-    <!-- 10 romance -->
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"><h3>A Culpa é das Estrelas</h3><p><strong>Sinopse:</strong> Um amor verdadeiro entre dois jovens vivendo intensamente.</p></div>
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/71jZ7LynfXL.jpg"><h3>Como Eu Era Antes de Você</h3><p><strong>Sinopse:</strong> A vida de Lou muda ao cuidar de Will, que perdeu a vontade de viver.</p></div>
-    <div class="livro"><img src="https://m.media-amazon.com/images/I/81r-tK3N1tL.jpg"><h3>O Morro dos Ventos Uivantes</h3><p><strong>Sinopse:</strong> Amor trágico e vingança nas charnecas inglesas.</p></div>
-    <!-- Adicione mais 7 aqui -->
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg" alt="O Pequeno Príncipe">
+    <h3>O Pequeno Príncipe</h3>
+    <p><strong>Sinopse:</strong> Em uma jornada entre planetas, um menino busca entender o mundo dos adultos. Uma fábula filosófica sobre o que realmente importa na vida.</p>
   </div>
-
-  <footer>
-    <p>© 2025 BookVerso • Biblioteca digital criada com 💜</p>
-  </footer>
-
-</body>
-</html>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81A-mvlo+QL.jpg" alt="Jane Eyre">
+    <h3>Jane Eyre</h3>
+    <p><strong>Sinopse:</strong> Uma jovem órfã enfrenta adversidades em busca de independência e amor verdadeiro, desafiando padrões da Inglaterra vitoriana.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71g2ednj0JL.jpg" alt="1984">
+    <h3>1984</h3>
+    <p><strong>Sinopse:</strong> Em uma sociedade totalitária, Winston Smith luta contra a opressão do Grande Irmão. Uma reflexão sobre vigilância, liberdade e verdade.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71EG88kCqcL.jpg" alt="Crime e Castigo">
+    <h3>Crime e Castigo</h3>
+    <p><strong>Sinopse:</strong> Após cometer um assassinato, Raskólnikov mergulha num conflito moral e psicológico em busca de redenção.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71OmxXZorEL.jpg" alt="Os Miseráveis">
+    <h3>Os Miseráveis</h3>
+    <p><strong>Sinopse:</strong> Jean Valjean tenta reconstruir sua vida após anos de prisão, mas é perseguido pelo implacável Javert. Uma história épica de justiça, redenção e compaixão.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71cG+8GbaRL.jpg" alt="O Grande Gatsby">
+    <h3>O Grande Gatsby</h3>
+    <p><strong>Sinopse:</strong> Na década de 1920, o misterioso Jay Gatsby promove festas extravagantes em busca de um amor perdido. Um retrato do sonho americano e suas ilusões.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71B9uKeM2ZL.jpg" alt="A Metamorfose">
+    <h3>A Metamorfose</h3>
+    <p><strong>Sinopse:</strong> Gregor Samsa acorda transformado em um inseto gigante, enfrentando o desprezo da família e a solidão. Um clássico sobre alienação e identidade.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71Q1Iu4suSL.jpg" alt="Frankenstein">
+    <h3>Frankenstein</h3>
+    <p><strong>Sinopse:</strong> Victor Frankenstein cria uma criatura a partir de cadáveres, mas rejeita sua criação. Uma narrativa gótica sobre responsabilidade, rejeição e humanidade.</p>
+  </div>
+</div><h2 class="section-title">🧙‍♀️ Fantasia & Aventura</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg" alt="As Crônicas de Nárnia">
+    <h3>As Crônicas de Nárnia</h3>
+    <p><strong>Sinopse:</strong> Quatro irmãos atravessam um guarda-roupa e descobrem Nárnia, um mundo encantado e ameaçado pela Feiticeira Branca. Ao lado do leão Aslan, enfrentam batalhas épicas repletas de magia, coragem e redenção.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81dQwQlmAXL.jpg" alt="Harry Potter e a Pedra Filosofal">
+    <h3>Harry Potter e a Pedra Filosofal</h3>
+    <p><strong>Sinopse:</strong> Harry descobre que é um bruxo e entra na escola Hogwarts, onde enfrenta desafios, constrói amizades e descobre segredos sobre seu passado e uma pedra mágica com poderes perigosos.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="O Hobbit">
+    <h3>O Hobbit</h3>
+    <p><strong>Sinopse:</strong> Bilbo Bolseiro é arrastado para uma jornada inesperada com anões e um mago em busca de um tesouro guardado por um dragão. Uma história divertida e épica sobre coragem e descobertas.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91ocU8970hL.jpg" alt="Percy Jackson e o Ladrão de Raios">
+    <h3>Percy Jackson e o Ladrão de Raios</h3>
+    <p><strong>Sinopse:</strong> Após descobrir ser filho de Poseidon, Percy embarca em uma missão para recuperar o raio mestre de Zeus e evitar uma guerra entre os deuses. A mitologia ganha vida numa aventura eletrizante.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91bYsX41DVL.jpg" alt="A Rainha Vermelha">
+    <h3>A Rainha Vermelha</h3>
+    <p><strong>Sinopse:</strong> Em um mundo dividido por sangue — vermelho para os comuns, prateado para os nobres — Mare descobre um poder capaz de mudar tudo. Um romance de fantasia distópica cheio de ação e intrigas.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91zrGfJ1H3L.jpg" alt="Cidade dos Ossos">
+    <h3>Cidade dos Ossos</h3>
+    <p><strong>Sinopse:</strong> Clary Fray descobre que pertence ao mundo dos Caçadores de Sombras e é arrastada para uma guerra contra demônios e segredos familiares. Um mergulho num universo sobrenatural cheio de tensão.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81hzZSLU9kL.jpg" alt="Mistborn – O Império Final">
+    <h3>Mistborn – O Império Final</h3>
+    <p><strong>Sinopse:</strong> Em um mundo sufocado por cinzas e tirania, uma jovem descobre poderes raros e se junta à rebelião para derrubar um império aparentemente imbatível. Mistério, ação e alquimia se entrelaçam com maestria.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91mIRMBzrxL.jpg" alt="A Terra das Sombras">
+    <h3>A Terra das Sombras</h3>
+    <p><strong>Sinopse:</strong> Após um acidente, Suze vê espíritos e precisa ajudá-los a seguir em frente. O problema é quando fantasmas se recusam a partir… Mistério e romance se misturam num suspense sobrenatural leve e envolvente.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91GgIZ4Xz-L.jpg" alt="Coraline">
+    <h3>Coraline</h3>
+    <p><strong>Sinopse:</strong> Ao abrir uma porta secreta em sua casa, Coraline encontra uma versão alternativa assustadora da sua família. Ela precisa enfrentar seus medos para salvar aqueles que ama. Um conto sombrio e poético.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81WcnNQ-TBL.jpg" alt="Eragon">
+    <h3>Eragon</h3>
+    <p><strong>Sinopse:</strong> Ao encontrar um ovo de dragão, Eragon vê sua vida mudar e torna-se parte de uma antiga profecia. Em busca de justiça, ele entra em conflito com forças que desejam controlar todo o reino.</p>
+  </div>
+</div>
+<h2 class="section-title">💔 Romance & Drama</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71as+9jPkdL.jpg" alt="A Culpa é das Estrelas">
+    <h3>A Culpa é das Estrelas</h3>
+    <p><strong>Sinopse:</strong> Hazel e Gus compartilham um amor intenso enquanto enfrentam o câncer. Entre metáforas, encontros poéticos e finais inesperados, descobrem o significado de viver plenamente.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81af+MCATTL.jpg" alt="O Grande Gatsby">
+    <h3>O Grande Gatsby</h3>
+    <p><strong>Sinopse:</strong> Jay Gatsby é obcecado por Daisy Buchanan e seus sonhos o levam a extremos. Uma crítica à sociedade americana dos anos 20 embalada por glamour, decadência e desilusão amorosa.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91Lew7eDCoL.jpg" alt="Orgulho e Preconceito">
+    <h3>Orgulho e Preconceito</h3>
+    <p><strong>Sinopse:</strong> Elizabeth Bennet confronta o arrogante Mr. Darcy enquanto desafia convenções sociais. Um clássico sobre como o amor pode superar julgamentos, orgulho e expectativas familiares.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81vpsIs58WL.jpg" alt="Como Eu Era Antes de Você">
+    <h3>Como Eu Era Antes de Você</h3>
+    <p><strong>Sinopse:</strong> Lou Clark entra na vida de Will Traynor, um jovem tetraplégico, e sua visão de mundo muda radicalmente. Um romance comovente sobre escolhas, limitações e descobertas pessoais.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81nzS7pPo4L.jpg" alt="Verity">
+    <h3>Verity</h3>
+    <p><strong>Sinopse:</strong> Lowen é contratada para concluir os livros de Verity, mas descobre um manuscrito inquietante. Uma mistura intensa de romance sombrio e suspense psicológico de tirar o fôlego.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/61Po1vFZT1L.jpg" alt="É Assim Que Acaba">
+    <h3>É Assim Que Acaba</h3>
+    <p><strong>Sinopse:</strong> Lily se apaixona por Ryle, mas fantasmas do passado voltam com força. Um romance sensível sobre violência doméstica, superação e os limites do amor verdadeiro.</p>
+  </div>
+</div><h2 class="section-title">🌌 Ficção Científica & Distopia</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81A-mvlo+QL.jpg" alt="1984">
+    <h3>1984</h3>
+    <p><strong>Sinopse:</strong> Winston Smith vive sob o domínio do Grande Irmão, onde pensamentos são vigiados e a verdade é manipulada. Um alerta atemporal sobre totalitarismo, controle social e perda da liberdade.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81ZgT2z2HPL.jpg" alt="Jogos Vorazes">
+    <h3>Jogos Vorazes</h3>
+    <p><strong>Sinopse:</strong> Katniss Everdeen é escolhida para competir em um jogo mortal transmitido ao vivo. Enquanto luta por sobrevivência, levanta questões sobre injustiça, resistência e sacrifício.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81xQA8puDLL.jpg" alt="Admirável Mundo Novo">
+    <h3>Admirável Mundo Novo</h3>
+    <p><strong>Sinopse:</strong> Em uma sociedade onde o prazer substitui a liberdade e as emoções são controladas, o indivíduo se torna apenas uma peça do sistema. Uma distopia provocadora sobre tecnologia e identidade.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71e0H5Cne1L.jpg" alt="Divergente">
+    <h3>Divergente</h3>
+    <p><strong>Sinopse:</strong> Em uma Chicago futurista, a sociedade é dividida em facções, e Tris descobre que não se encaixa em nenhuma. Sua divergência pode ser a chave para mudar o sistema opressor.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81Q1YBVoTxL.jpg" alt="O Conto da Aia">
+    <h3>O Conto da Aia</h3>
+    <p><strong>Sinopse:</strong> Em um regime teocrático que escraviza mulheres férteis, Offred luta para preservar sua identidade. Uma narrativa inquietante sobre patriarcado, controle reprodutivo e resistência silenciosa.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/715J83gGfEL.jpg" alt="Estrela Perdida">
+    <h3>Estrela Perdida</h3>
+    <p><strong>Sinopse:</strong> Num futuro intergaláctico, uma piloto e um soldado se unem contra um império cruel. Misturando ação, romance e dilemas éticos, esta ficção espacial é pura adrenalina e emoção.</p>
+  </div>
+</div><h2 class="section-title">🕵️‍♀️ Mistério & Suspense</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91TduL7yIPL.jpg" alt="O Código Da Vinci">
+    <h3>O Código Da Vinci</h3>
+    <p><strong>Sinopse:</strong> Um assassinato no Louvre dá início a uma caça por segredos escondidos pela Igreja. Robert Langdon e Sophie Neveu seguem pistas que desafiam a história e a fé.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81XbTMC5yXL.jpg" alt="Garota Exemplar">
+    <h3>Garota Exemplar</h3>
+    <p><strong>Sinopse:</strong> Quando Amy desaparece, todas as suspeitas recaem sobre seu marido, Nick. Mas as aparências enganam… um thriller psicológico cheio de reviravoltas e jogos mentais.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91wVgx9sk+L.jpg" alt="O Silêncio dos Inocentes">
+    <h3>O Silêncio dos Inocentes</h3>
+    <p><strong>Sinopse:</strong> Clarice Starling, agente do FBI, busca ajuda de Hannibal Lecter, um assassino brilhante, para capturar outro serial killer. Inteligência e tensão num jogo perigoso de manipulação.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81YfMJBraDL.jpg" alt="A Paciente Silenciosa">
+    <h3>A Paciente Silenciosa</h3>
+    <p><strong>Sinopse:</strong> Alicia Berenson mata seu marido e silencia completamente. O psicoterapeuta Theo busca descobrir o motivo, mergulhando em um mistério que desafia sanidade e obsessão.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71qZ9cw5HjL.jpg" alt="Em Águas Sombrias">
+    <h3>Em Águas Sombrias</h3>
+    <p><strong>Sinopse:</strong> Uma mulher morre em um rio marcado por tragédias passadas. Ao investigar o caso, segredos antigos e conexões sombrias emergem, revelando o lado obscuro de uma cidade pequena.</p>
+  </div>
+</div><h2 class="section-title">📖 Clássicos & Literatura Mundial</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71MihaLZy-L.jpg" alt="Dom Quixote">
+    <h3>Dom Quixote</h3>
+    <p><strong>Sinopse:</strong> Um fidalgo sonhador sai pelos campos da Espanha como cavaleiro errante, acompanhado por seu fiel escudeiro Sancho Pança. Uma obra que mistura comédia, crítica social e loucura heroica.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91qv5ZjQDeL.jpg" alt="Cem Anos de Solidão">
+    <h3>Cem Anos de Solidão</h3>
+    <p><strong>Sinopse:</strong> A saga da família Buendía na cidade fictícia de Macondo, onde o tempo é circular e o real se mistura ao mágico. Um clássico latino-americano sobre memória, destino e isolamento.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81bJUJQ5hZL.jpg" alt="Grande Sertão: Veredas">
+    <h3>Grande Sertão: Veredas</h3>
+    <p><strong>Sinopse:</strong> Riobaldo narra sua vida de jagunço em meio a dilemas morais, paixões intensas e reflexões filosóficas. Um mergulho na alma brasileira e na vastidão do sertão mineiro.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81wNWiU2NAL.jpg" alt="O Pequeno Príncipe">
+    <h3>O Pequeno Príncipe</h3>
+    <p><strong>Sinopse:</strong> Um piloto encontra um garotinho vindo de outro planeta. Com lições poéticas sobre amizade, amor e responsabilidade, esta fábula encanta leitores de todas as idades.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71lLB0iJ7IL.jpg" alt="O Morro dos Ventos Uivantes">
+    <h3>O Morro dos Ventos Uivantes</h3>
+    <p><strong>Sinopse:</strong> Heathcliff e Catherine vivem um amor intenso, sombrio e destrutivo nas charnecas inglesas. Uma narrativa sobre obsessão, vingança e almas indomáveis.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81jvxQ4YJZL.jpg" alt="Memórias Póstumas de Brás Cubas">
+    <h3>Memórias Póstumas de Brás Cubas</h3>
+    <p><strong>Sinopse:</strong> Um defunto autor narra sua própria vida com ironia cortante e humor melancólico. Machado de Assis quebra barreiras literárias com esse clássico irreverente e filosófico.</p>
+  </div>
+</div><h2 class="section-title">🧸 Infantil & Infantojuvenil</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81fg0yDpV-L.jpg" alt="Diário de um Banana">
+    <h3>Diário de um Banana</h3>
+    <p><strong>Sinopse:</strong> Greg Heffley narra suas aventuras (e trapalhadas) na escola com bom humor e ilustrações hilárias. Uma leitura leve que conquista leitores iniciantes com identificação e gargalhadas.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91sh1xNBdhL.jpg" alt="Harry Potter e a Câmara Secreta">
+    <h3>Harry Potter e a Câmara Secreta</h3>
+    <p><strong>Sinopse:</strong> De volta a Hogwarts, Harry precisa enfrentar uma ameaça misteriosa escondida na escola. Magia, amizade e coragem se entrelaçam em mais uma aventura inesquecível.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81EmXWtGUHL.jpg" alt="A Ilha do Tesouro">
+    <h3>A Ilha do Tesouro</h3>
+    <p><strong>Sinopse:</strong> Jim Hawkins encontra um mapa e embarca em uma viagem cheia de piratas, perigos e ouro escondido. Uma clássica história de aventura e descobertas para jovens ousados.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/816Y9xWbR5L.jpg" alt="As Aventuras de Pinóquio">
+    <h3>As Aventuras de Pinóquio</h3>
+    <p><strong>Sinopse:</strong> Um boneco de madeira que sonha em se tornar um menino de verdade enfrenta desafios e tentações. Uma fábula sobre verdade, crescimento e empatia com toques mágicos.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/61wnU+FyYOL.jpg" alt="O Menino Maluquinho">
+    <h3>O Menino Maluquinho</h3>
+    <p><strong>Sinopse:</strong> Um garoto criativo e bagunceiro vive aventuras divertidas com seus amigos. Uma celebração da infância brasileira, cheia de imaginação, afeto e liberdade.</p>
+  </div>
+</div><h2 class="section-title">🧸 Infantil & Infantojuvenil</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81fg0yDpV-L.jpg" alt="Diário de um Banana">
+    <h3>Diário de um Banana</h3>
+    <p><strong>Sinopse:</strong> Greg Heffley narra suas aventuras (e trapalhadas) na escola com bom humor e ilustrações hilárias. Uma leitura leve que conquista leitores iniciantes com identificação e gargalhadas.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91sh1xNBdhL.jpg" alt="Harry Potter e a Câmara Secreta">
+    <h3>Harry Potter e a Câmara Secreta</h3>
+    <p><strong>Sinopse:</strong> De volta a Hogwarts, Harry precisa enfrentar uma ameaça misteriosa escondida na escola. Magia, amizade e coragem se entrelaçam em mais uma aventura inesquecível.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81EmXWtGUHL.jpg" alt="A Ilha do Tesouro">
+    <h3>A Ilha do Tesouro</h3>
+    <p><strong>Sinopse:</strong> Jim Hawkins encontra um mapa e embarca em uma viagem cheia de piratas, perigos e ouro escondido. Uma clássica história de aventura e descobertas para jovens ousados.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/816Y9xWbR5L.jpg" alt="As Aventuras de Pinóquio">
+    <h3>As Aventuras de Pinóquio</h3>
+    <p><strong>Sinopse:</strong> Um boneco de madeira que sonha em se tornar um menino de verdade enfrenta desafios e tentações. Uma fábula sobre verdade, crescimento e empatia com toques mágicos.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/61wnU+FyYOL.jpg" alt="O Menino Maluquinho">
+    <h3>O Menino Maluquinho</h3>
+    <p><strong>Sinopse:</strong> Um garoto criativo e bagunceiro vive aventuras divertidas com seus amigos. Uma celebração da infância brasileira, cheia de imaginação, afeto e liberdade.</p>
+  </div>
+</div><h2 class="section-title">📖 Clássicos & Literatura Mundial</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71MihaLZy-L.jpg" alt="Dom Quixote">
+    <h3>Dom Quixote</h3>
+    <p><strong>Sinopse:</strong> Um fidalgo sonhador sai pelos campos da Espanha como cavaleiro errante, acompanhado por seu fiel escudeiro Sancho Pança. Uma obra que mistura comédia, crítica social e loucura heroica.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91qv5ZjQDeL.jpg" alt="Cem Anos de Solidão">
+    <h3>Cem Anos de Solidão</h3>
+    <p><strong>Sinopse:</strong> A saga da família Buendía na cidade fictícia de Macondo, onde o tempo é circular e o real se mistura ao mágico. Um clássico latino-americano sobre memória, destino e isolamento.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81bJUJQ5hZL.jpg" alt="Grande Sertão: Veredas">
+    <h3>Grande Sertão: Veredas</h3>
+    <p><strong>Sinopse:</strong> Riobaldo narra sua vida de jagunço em meio a dilemas morais, paixões intensas e reflexões filosóficas. Um mergulho na alma brasileira e na vastidão do sertão mineiro.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81wNWiU2NAL.jpg" alt="O Pequeno Príncipe">
+    <h3>O Pequeno Príncipe</h3>
+    <p><strong>Sinopse:</strong> Um piloto encontra um garotinho vindo de outro planeta. Com lições poéticas sobre amizade, amor e responsabilidade, esta fábula encanta leitores de todas as idades.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71lLB0iJ7IL.jpg" alt="O Morro dos Ventos Uivantes">
+    <h3>O Morro dos Ventos Uivantes</h3>
+    <p><strong>Sinopse:</strong> Heathcliff e Catherine vivem um amor intenso, sombrio e destrutivo nas charnecas inglesas. Uma narrativa sobre obsessão, vingança e almas indomáveis.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81jvxQ4YJZL.jpg" alt="Memórias Póstumas de Brás Cubas">
+    <h3>Memórias Póstumas de Brás Cubas</h3>
+    <p><strong>Sinopse:</strong> Um defunto autor narra sua própria vida com ironia cortante e humor melancólico. Machado de Assis quebra barreiras literárias com esse clássico irreverente e filosófico.</p>
+  </div>
+</div><h2 class="section-title">📖 Clássicos & Literatura Mundial</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71MihaLZy-L.jpg" alt="Dom Quixote">
+    <h3>Dom Quixote</h3>
+    <p><strong>Sinopse:</strong> Um fidalgo sonhador sai pelos campos da Espanha como cavaleiro errante, acompanhado por seu fiel escudeiro Sancho Pança. Uma obra que mistura comédia, crítica social e loucura heroica.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91qv5ZjQDeL.jpg" alt="Cem Anos de Solidão">
+    <h3>Cem Anos de Solidão</h3>
+    <p><strong>Sinopse:</strong> A saga da família Buendía na cidade fictícia de Macondo, onde o tempo é circular e o real se mistura ao mágico. Um clássico latino-americano sobre memória, destino e isolamento.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81bJUJQ5hZL.jpg" alt="Grande Sertão: Veredas">
+    <h3>Grande Sertão: Veredas</h3>
+    <p><strong>Sinopse:</strong> Riobaldo narra sua vida de jagunço em meio a dilemas morais, paixões intensas e reflexões filosóficas. Um mergulho na alma brasileira e na vastidão do sertão mineiro.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81wNWiU2NAL.jpg" alt="O Pequeno Príncipe">
+    <h3>O Pequeno Príncipe</h3>
+    <p><strong>Sinopse:</strong> Um piloto encontra um garotinho vindo de outro planeta. Com lições poéticas sobre amizade, amor e responsabilidade, esta fábula encanta leitores de todas as idades.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71lLB0iJ7IL.jpg" alt="O Morro dos Ventos Uivantes">
+    <h3>O Morro dos Ventos Uivantes</h3>
+    <p><strong>Sinopse:</strong> Heathcliff e Catherine vivem um amor intenso, sombrio e destrutivo nas charnecas inglesas. Uma narrativa sobre obsessão, vingança e almas indomáveis.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81jvxQ4YJZL.jpg" alt="Memórias Póstumas de Brás Cubas">
+    <h3>Memórias Póstumas de Brás Cubas</h3>
+    <p><strong>Sinopse:</strong> Um defunto autor narra sua própria vida com ironia cortante e humor melancólico. Machado de Assis quebra barreiras literárias com esse clássico irreverente e filosófico.</p>
+  </div>
+</div><h2 class="section-title">🧸 Infantil & Infantojuvenil</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81fg0yDpV-L.jpg" alt="Diário de um Banana">
+    <h3>Diário de um Banana</h3>
+    <p><strong>Sinopse:</strong> Greg Heffley narra suas aventuras (e trapalhadas) na escola com bom humor e ilustrações hilárias. Uma leitura leve que conquista leitores iniciantes com identificação e gargalhadas.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91sh1xNBdhL.jpg" alt="Harry Potter e a Câmara Secreta">
+    <h3>Harry Potter e a Câmara Secreta</h3>
+    <p><strong>Sinopse:</strong> De volta a Hogwarts, Harry precisa enfrentar uma ameaça misteriosa escondida na escola. Magia, amizade e coragem se entrelaçam em mais uma aventura inesquecível.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81EmXWtGUHL.jpg" alt="A Ilha do Tesouro">
+    <h3>A Ilha do Tesouro</h3>
+    <p><strong>Sinopse:</strong> Jim Hawkins encontra um mapa e embarca em uma viagem cheia de piratas, perigos e ouro escondido. Uma clássica história de aventura e descobertas para jovens ousados.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/816Y9xWbR5L.jpg" alt="As Aventuras de Pinóquio">
+    <h3>As Aventuras de Pinóquio</h3>
+    <p><strong>Sinopse:</strong> Um boneco de madeira que sonha em se tornar um menino de verdade enfrenta desafios e tentações. Uma fábula sobre verdade, crescimento e empatia com toques mágicos.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/61wnU+FyYOL.jpg" alt="O Menino Maluquinho">
+    <h3>O Menino Maluquinho</h3>
+    <p><strong>Sinopse:</strong> Um garoto criativo e bagunceiro vive aventuras divertidas com seus amigos. Uma celebração da infância brasileira, cheia de imaginação, afeto e liberdade.</p>
+  </div>
+</div><h2 class="section-title">📒 HQs & Graphic Novels</h2>
+<div class="categoria-livros">
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81r-s4eD+3L.jpg" alt="V de Vingança">
+    <h3>V de Vingança</h3>
+    <p><strong>Sinopse:</strong> Em uma Londres totalitária, o enigmático V inicia uma revolução contra o regime opressor. Uma crítica poderosa sobre liberdade, identidade e resistência, com traços marcantes e roteiro provocador.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91l30EpFwsL.jpg" alt="Persépolis">
+    <h3>Persépolis</h3>
+    <p><strong>Sinopse:</strong> Marjane Satrapi narra sua infância no Irã durante a revolução islâmica. Com estilo simples e tocante, esta autobiografia gráfica mistura política, feminismo e memória com elegância visual.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/71MCkXbPYgL.jpg" alt="Maus">
+    <h3>Maus</h3>
+    <p><strong>Sinopse:</strong> Art Spiegelman entrevista seu pai sobrevivente do Holocausto, usando animais como metáforas visuais. Uma obra impactante sobre trauma, herança e o poder da narrativa gráfica.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/91Kje28IxDL.jpg" alt="Scott Pilgrim Contra o Mundo">
+    <h3>Scott Pilgrim Contra o Mundo</h3>
+    <p><strong>Sinopse:</strong> Para conquistar Ramona Flowers, Scott precisa enfrentar seus ex-namorados do mal em batalhas surreais. Uma mistura de comédia, romance e cultura pop com ritmo explosivo e estilo irreverente.</p>
+  </div>
+  <div class="livro">
+    <img src="https://m.media-amazon.com/images/I/81swXWy1xQL.jpg" alt="Sandman – Prelúdios & Noturnos">
+    <h3>Sandman – Prelúdios & Noturnos</h3>
+    <p><strong>Sinopse:</strong> Sonho, um dos Perpétuos, escapa do cativeiro e reconstrói seu reino. Com narrativa densa e poética, Neil Gaiman abre as portas para um universo onírico profundo e esteticamente único.</p>
+  </div>
+</div>
