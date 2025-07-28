@@ -1,1078 +1,123 @@
-from pathlib import Path
-
-
-
-# Categorias a serem incluídas
-
-categorias = [
-
-    "Contemporâneo",
-
-    "Histórico",
-
-    "Adolescente",
-
-    "Dark Romance",
-
-    "Clichê",
-
-    "Comédia Romântica",
-
-    "Enemies to Lovers",
-
-    "Friends to Lovers",
-
-    "Sobrenatural",
-
-    "LGBTQIA+"
-
-]
-
-
-
-# Cores base em tons de roxo
-
-css_style = """
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BookVerso • Universo Literário</title>
+  <style>
     body {
-
-      font-family: Arial, sans-serif;
-
       margin: 0;
-
-      background-color: #f8f0ff;
-
-      color: #2e003e;
-
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f0fb;
+      color: #4a148c;
     }
 
     header {
-
-      background-color: #6a0dad;
-
+      background: linear-gradient(135deg, #ce93d8, #ba68c8);
+      padding: 30px 20px;
+      text-align: center;
       color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-      padding: 20px;
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
 
+    header p {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .section-title {
       text-align: center;
-
+      margin-top: 40px;
+      font-size: 2em;
+      color: #6a1b9a;
     }
 
-    nav {
-
-      background-color: #d8b0ff;
-
-      padding: 10px;
-
-      text-align: center;
-
-      flex-wrap: wrap;
-
-    }
-
-    nav a {
-
-      margin: 10px;
-
-      text-decoration: none;
-
-      color: #4b0082;
-
-      font-weight: bold;
-
-    }
-
-    section {
-
+    .categoria-livros {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       padding: 20px;
-
     }
 
-    h2 {
-
-      color: #4b0082;
-
-      border-bottom: 2px solid #dda0dd;
-
-      padding-bottom: 5px;
-
-    }
-
-    .book-card {
-
-      background-color: #fff;
-
+    .livro {
+      background-color: #ede7f6;
+      border-radius: 12px;
       padding: 15px;
+      box-shadow: 0 4px 10px rgba(74, 20, 140, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-      border: 1px solid #d8b0ff;
+    .livro:hover {
+      transform: scale(1.05);
+    }
 
+    .livro img {
+      width: 100%;
       border-radius: 8px;
-
-      margin-bottom: 15px;
-
-      box-shadow: 2px 2px 5px rgba(138, 43, 226, 0.2);
-
     }
 
-    .book-card h3 {
-
-      color: #6a0dad;
-
-      margin-bottom: 5px;
-
+    .livro h3 {
+      margin: 10px 0 5px;
+      color: #4a148c;
+      font-size: 1.1em;
     }
 
-    .book-card p {
-
-      margin: 5px 0;
-
+    .livro p {
+      font-size: 0.95em;
+      line-height: 1.4;
     }
 
     footer {
-
-      background-color: #6a0dad;
-
-      color: white;
-
+      background-color: #ce93d8;
       text-align: center;
-
       padding: 15px;
-
+      color: white;
       margin-top: 40px;
-
     }
-
-"""
-
-
-
-# Começo do HTML
-
-html_content = f"""
-
-<!DOCTYPE html>
-
-<html lang="pt-br">
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>Biblioteca do Amor</title>
-
-  <style>{css_style}</style>
-
+  </style>
 </head>
-
 <body>
 
-
-
   <header>
-
-    <h1>📚 Biblioteca do Amor</h1>
-
-    <p>Mais de 100 romances para se apaixonar</p>
-
+    <h1>BookVerso</h1>
+    <p>Seu universo de leitura favorito em tons de magia e inspiração 💜📚</p>
   </header>
 
+  <h2 class="section-title">🎩 Clássicos da Literatura</h2>
+  <div class="categoria-livros">
+    <!-- 10 clássicos -->
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/81DFqa5irZL.jpg"><h3>Orgulho e Preconceito</h3><p><strong>Sinopse:</strong> Amor e orgulho em tempos de normas sociais rígidas.</p></div>
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/91MteVr4gkL.jpg"><h3>Dom Quixote</h3><p><strong>Sinopse:</strong> Um cavaleiro sonhador enfrenta gigantes (ou seriam moinhos?).</p></div>
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg"><h3>O Pequeno Príncipe</h3><p><strong>Sinopse:</strong> Uma história sobre o essencial invisível aos olhos.</p></div>
+    <!-- Adicione mais 7 aqui -->
+  </div>
 
+  <h2 class="section-title">🧙‍♀️ Fantasia & Aventura</h2>
+  <div class="categoria-livros">
+    <!-- 10 fantasia -->
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/81dQwQlmAXL.jpg"><h3>Harry Potter</h3><p><strong>Sinopse:</strong> Um menino bruxo enfrenta seu destino contra o mal.</p></div>
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg"><h3>As Crônicas de Nárnia</h3><p><strong>Sinopse:</strong> Quatro irmãos descobrem um mundo mágico através de um guarda-roupa.</p></div>
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"><h3>O Hobbit</h3><p><strong>Sinopse:</strong> Bilbo embarca em uma jornada épica com anões e um dragão.</p></div>
+    <!-- Adicione mais 7 aqui -->
+  </div>
 
-  <nav>
-
-    {''.join([f'<a href="#{cat.lower().replace(" ", "")}">{cat}</a>' for cat in categorias])}
-
-  </nav>
-
-
-
-  <main>
-
-"""
-
-
-
-# Função para gerar livros fictícios
-
-def gerar_livros(categoria, qtd):
-
-    livros = []
-
-    for i in range(1, qtd + 1):
-
-        titulo = f"{categoria} #{i}"
-
-        autor = f"Autor(a) {categoria[:3]}{i}"
-
-        sinopse = f"Uma história envolvente de amor em {categoria.lower()} número {i}."
-
-        estrelas = (i % 5) + 1
-
-        livros.append((titulo, autor, sinopse, estrelas))
-
-    return livros
-
-
-
-# Adicionar cada categoria com 10 livros fictícios
-
-for cat in categorias:
-
-    html_content += f'<section id="{cat.lower().replace(" ", "")}">\n<h2>{cat}</h2>\n'
-
-    livros = gerar_livros(cat, 10)
-
-    for titulo, autor, sinopse, estrelas in livros:
-
-        html_content += f"""
-
-        <div class="book-card">
-
-          <h3>📖 {titulo}</h3>
-
-          <p><strong>Autora:</strong> {autor}</p>
-
-          <p><strong>Sinopse:</strong> {sinopse}</p>
-
-          <p><strong>Avaliação:</strong> {'⭐' * estrelas}{'☆' * (5 - estrelas)}</p>
-
-        </div>
-
-        """
-
-    html_content += '</section>\n'
-
-
-
-# Finalizar HTML
-
-html_content += """
-
-  </main>
+  <h2 class="section-title">❤️ Romance & Drama</h2>
+  <div class="categoria-livros">
+    <!-- 10 romance -->
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"><h3>A Culpa é das Estrelas</h3><p><strong>Sinopse:</strong> Um amor verdadeiro entre dois jovens vivendo intensamente.</p></div>
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/71jZ7LynfXL.jpg"><h3>Como Eu Era Antes de Você</h3><p><strong>Sinopse:</strong> A vida de Lou muda ao cuidar de Will, que perdeu a vontade de viver.</p></div>
+    <div class="livro"><img src="https://m.media-amazon.com/images/I/81r-tK3N1tL.jpg"><h3>O Morro dos Ventos Uivantes</h3><p><strong>Sinopse:</strong> Amor trágico e vingança nas charnecas inglesas.</p></div>
+    <!-- Adicione mais 7 aqui -->
+  </div>
 
   <footer>
-
-    <p>Feito com 💜 por amantes de romances | © 2025</p>
-
+    <p>© 2025 BookVerso • Biblioteca digital criada com 💜</p>
   </footer>
 
 </body>
-
 </html>
-
-"""
-
-
-
-# Salvar arquivo
-
-file_path = Path("/mnt/data/biblioteca_romance_completa.html")
-
-file_path.write_text(html_content, encoding="utf-8")
-
-file_path.namefrom pathlib import Path
-
-
-
-# Categorias a serem incluídas
-
-categorias = [
-
-    "Contemporâneo",
-
-    "Histórico",
-
-    "Adolescente",
-
-    "Dark Romance",
-
-    "Clichê",
-
-    "Comédia Romântica",
-
-    "Enemies to Lovers",
-
-    "Friends to Lovers",
-
-    "Sobrenatural",
-
-    "LGBTQIA+"
-
-]
-
-
-
-# Cores base em tons de roxo
-
-css_style = """
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-      margin: 0;
-
-      background-color: #f8f0ff;
-
-      color: #2e003e;
-
-    }
-
-    header {
-
-      background-color: #6a0dad;
-
-      color: white;
-
-      padding: 20px;
-
-      text-align: center;
-
-    }
-
-    nav {
-
-      background-color: #d8b0ff;
-
-      padding: 10px;
-
-      text-align: center;
-
-      flex-wrap: wrap;
-
-    }
-
-    nav a {
-
-      margin: 10px;
-
-      text-decoration: none;
-
-      color: #4b0082;
-
-      font-weight: bold;
-
-    }
-
-    section {
-
-      padding: 20px;
-
-    }
-
-    h2 {
-
-      color: #4b0082;
-
-      border-bottom: 2px solid #dda0dd;
-
-      padding-bottom: 5px;
-
-    }
-
-    .book-card {
-
-      background-color: #fff;
-
-      padding: 15px;
-
-      border: 1px solid #d8b0ff;
-
-      border-radius: 8px;
-
-      margin-bottom: 15px;
-
-      box-shadow: 2px 2px 5px rgba(138, 43, 226, 0.2);
-
-    }
-
-    .book-card h3 {
-
-      color: #6a0dad;
-
-      margin-bottom: 5px;
-
-    }
-
-    .book-card p {
-
-      margin: 5px 0;
-
-    }
-
-    footer {
-
-      background-color: #6a0dad;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 15px;
-
-      margin-top: 40px;
-
-    }
-
-"""
-
-
-
-# Começo do HTML
-
-html_content = f"""
-
-<!DOCTYPE html>
-
-<html lang="pt-br">
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>Biblioteca do Amor</title>
-
-  <style>{css_style}</style>
-
-</head>
-
-<body>
-
-
-
-  <header>
-
-    <h1>📚 Biblioteca do Amor</h1>
-
-    <p>Mais de 100 romances para se apaixonar</p>
-
-  </header>
-
-
-
-  <nav>
-
-    {''.join([f'<a href="#{cat.lower().replace(" ", "")}">{cat}</a>' for cat in categorias])}
-
-  </nav>
-
-
-
-  <main>
-
-"""
-
-
-
-# Função para gerar livros fictícios
-
-def gerar_livros(categoria, qtd):
-
-    livros = []
-
-    for i in range(1, qtd + 1):
-
-        titulo = f"{categoria} #{i}"
-
-        autor = f"Autor(a) {categoria[:3]}{i}"
-
-        sinopse = f"Uma história envolvente de amor em {categoria.lower()} número {i}."
-
-        estrelas = (i % 5) + 1
-
-        livros.append((titulo, autor, sinopse, estrelas))
-
-    return livros
-
-
-
-# Adicionar cada categoria com 10 livros fictícios
-
-for cat in categorias:
-
-    html_content += f'<section id="{cat.lower().replace(" ", "")}">\n<h2>{cat}</h2>\n'
-
-    livros = gerar_livros(cat, 10)
-
-    for titulo, autor, sinopse, estrelas in livros:
-
-        html_content += f"""
-
-        <div class="book-card">
-
-          <h3>📖 {titulo}</h3>
-
-          <p><strong>Autora:</strong> {autor}</p>
-
-          <p><strong>Sinopse:</strong> {sinopse}</p>
-
-          <p><strong>Avaliação:</strong> {'⭐' * estrelas}{'☆' * (5 - estrelas)}</p>
-
-        </div>
-
-        """
-
-    html_content += '</section>\n'
-
-
-
-# Finalizar HTML
-
-html_content += """
-
-  </main>
-
-  <footer>
-
-    <p>Feito com 💜 por amantes de romances | © 2025</p>
-
-  </footer>
-
-</body>
-
-</html>
-
-"""
-
-
-
-# Salvar arquivo
-
-file_path = Path("/mnt/data/biblioteca_romance_completa.html")
-
-file_path.write_text(html_content, encoding="utf-8")
-
-file_path.namefrom pathlib import Path
-
-
-
-# Categorias a serem incluídas
-
-categorias = [
-
-    "Contemporâneo",
-
-    "Histórico",
-
-    "Adolescente",
-
-    "Dark Romance",
-
-    "Clichê",
-
-    "Comédia Romântica",
-
-    "Enemies to Lovers",
-
-    "Friends to Lovers",
-
-    "Sobrenatural",
-
-    "LGBTQIA+"
-
-]
-
-
-
-# Cores base em tons de roxo
-
-css_style = """
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-      margin: 0;
-
-      background-color: #f8f0ff;
-
-      color: #2e003e;
-
-    }
-
-    header {
-
-      background-color: #6a0dad;
-
-      color: white;
-
-      padding: 20px;
-
-      text-align: center;
-
-    }
-
-    nav {
-
-      background-color: #d8b0ff;
-
-      padding: 10px;
-
-      text-align: center;
-
-      flex-wrap: wrap;
-
-    }
-
-    nav a {
-
-      margin: 10px;
-
-      text-decoration: none;
-
-      color: #4b0082;
-
-      font-weight: bold;
-
-    }
-
-    section {
-
-      padding: 20px;
-
-    }
-
-    h2 {
-
-      color: #4b0082;
-
-      border-bottom: 2px solid #dda0dd;
-
-      padding-bottom: 5px;
-
-    }
-
-    .book-card {
-
-      background-color: #fff;
-
-      padding: 15px;
-
-      border: 1px solid #d8b0ff;
-
-      border-radius: 8px;
-
-      margin-bottom: 15px;
-
-      box-shadow: 2px 2px 5px rgba(138, 43, 226, 0.2);
-
-    }
-
-    .book-card h3 {
-
-      color: #6a0dad;
-
-      margin-bottom: 5px;
-
-    }
-
-    .book-card p {
-
-      margin: 5px 0;
-
-    }
-
-    footer {
-
-      background-color: #6a0dad;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 15px;
-
-      margin-top: 40px;
-
-    }
-
-"""
-
-
-
-# Começo do HTML
-
-html_content = f"""
-
-<!DOCTYPE html>
-
-<html lang="pt-br">
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>Biblioteca do Amor</title>
-
-  <style>{css_style}</style>
-
-</head>
-
-<body>
-
-
-
-  <header>
-
-    <h1>📚 Biblioteca do Amor</h1>
-
-    <p>Mais de 100 romances para se apaixonar</p>
-
-  </header>
-
-
-
-  <nav>
-
-    {''.join([f'<a href="#{cat.lower().replace(" ", "")}">{cat}</a>' for cat in categorias])}
-
-  </nav>
-
-
-
-  <main>
-
-"""
-
-
-
-# Função para gerar livros fictícios
-
-def gerar_livros(categoria, qtd):
-
-    livros = []
-
-    for i in range(1, qtd + 1):
-
-        titulo = f"{categoria} #{i}"
-
-        autor = f"Autor(a) {categoria[:3]}{i}"
-
-        sinopse = f"Uma história envolvente de amor em {categoria.lower()} número {i}."
-
-        estrelas = (i % 5) + 1
-
-        livros.append((titulo, autor, sinopse, estrelas))
-
-    return livros
-
-
-
-# Adicionar cada categoria com 10 livros fictícios
-
-for cat in categorias:
-
-    html_content += f'<section id="{cat.lower().replace(" ", "")}">\n<h2>{cat}</h2>\n'
-
-    livros = gerar_livros(cat, 10)
-
-    for titulo, autor, sinopse, estrelas in livros:
-
-        html_content += f"""
-
-        <div class="book-card">
-
-          <h3>📖 {titulo}</h3>
-
-          <p><strong>Autora:</strong> {autor}</p>
-
-          <p><strong>Sinopse:</strong> {sinopse}</p>
-
-          <p><strong>Avaliação:</strong> {'⭐' * estrelas}{'☆' * (5 - estrelas)}</p>
-
-        </div>
-
-        """
-
-    html_content += '</section>\n'
-
-
-
-# Finalizar HTML
-
-html_content += """
-
-  </main>
-
-  <footer>
-
-    <p>Feito com 💜 por amantes de romances | © 2025</p>
-
-  </footer>
-
-</body>
-
-</html>
-
-"""
-
-
-
-# Salvar arquivo
-
-file_path = Path("/mnt/data/biblioteca_romance_completa.html")
-
-file_path.write_text(html_content, encoding="utf-8")
-
-file_path.namefrom pathlib import Path
-
-
-
-# Categorias a serem incluídas
-
-categorias = [
-
-    "Contemporâneo",
-
-    "Histórico",
-
-    "Adolescente",
-
-    "Dark Romance",
-
-    "Clichê",
-
-    "Comédia Romântica",
-
-    "Enemies to Lovers",
-
-    "Friends to Lovers",
-
-    "Sobrenatural",
-
-    "LGBTQIA+"
-
-]
-
-
-
-# Cores base em tons de roxo
-
-css_style = """
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-      margin: 0;
-
-      background-color: #f8f0ff;
-
-      color: #2e003e;
-
-    }
-
-    header {
-
-      background-color: #6a0dad;
-
-      color: white;
-
-      padding: 20px;
-
-      text-align: center;
-
-    }
-
-    nav {
-
-      background-color: #d8b0ff;
-
-      padding: 10px;
-
-      text-align: center;
-
-      flex-wrap: wrap;
-
-    }
-
-    nav a {
-
-      margin: 10px;
-
-      text-decoration: none;
-
-      color: #4b0082;
-
-      font-weight: bold;
-
-    }
-
-    section {
-
-      padding: 20px;
-
-    }
-
-    h2 {
-
-      color: #4b0082;
-
-      border-bottom: 2px solid #dda0dd;
-
-      padding-bottom: 5px;
-
-    }
-
-    .book-card {
-
-      background-color: #fff;
-
-      padding: 15px;
-
-      border: 1px solid #d8b0ff;
-
-      border-radius: 8px;
-
-      margin-bottom: 15px;
-
-      box-shadow: 2px 2px 5px rgba(138, 43, 226, 0.2);
-
-    }
-
-    .book-card h3 {
-
-      color: #6a0dad;
-
-      margin-bottom: 5px;
-
-    }
-
-    .book-card p {
-
-      margin: 5px 0;
-
-    }
-
-    footer {
-
-      background-color: #6a0dad;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 15px;
-
-      margin-top: 40px;
-
-    }
-
-"""
-
-
-
-# Começo do HTML
-
-html_content = f"""
-
-<!DOCTYPE html>
-
-<html lang="pt-br">
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>Biblioteca do Amor</title>
-
-  <style>{css_style}</style>
-
-</head>
-
-<body>
-
-
-
-  <header>
-
-    <h1>📚 Biblioteca do Amor</h1>
-
-    <p>Mais de 100 romances para se apaixonar</p>
-
-  </header>
-
-
-
-  <nav>
-
-    {''.join([f'<a href="#{cat.lower().replace(" ", "")}">{cat}</a>' for cat in categorias])}
-
-  </nav>
-
-
-
-  <main>
-
-"""
-
-
-
-# Função para gerar livros fictícios
-
-def gerar_livros(categoria, qtd):
-
-    livros = []
-
-    for i in range(1, qtd + 1):
-
-        titulo = f"{categoria} #{i}"
-
-        autor = f"Autor(a) {categoria[:3]}{i}"
-
-        sinopse = f"Uma história envolvente de amor em {categoria.lower()} número {i}."
-
-        estrelas = (i % 5) + 1
-
-        livros.append((titulo, autor, sinopse, estrelas))
-
-    return livros
-
-
-
-# Adicionar cada categoria com 10 livros fictícios
-
-for cat in categorias:
-
-    html_content += f'<section id="{cat.lower().replace(" ", "")}">\n<h2>{cat}</h2>\n'
-
-    livros = gerar_livros(cat, 10)
-
-    for titulo, autor, sinopse, estrelas in livros:
-
-        html_content += f"""
-
-        <div class="book-card">
-
-          <h3>📖 {titulo}</h3>
-
-          <p><strong>Autora:</strong> {autor}</p>
-
-          <p><strong>Sinopse:</strong> {sinopse}</p>
-
-          <p><strong>Avaliação:</strong> {'⭐' * estrelas}{'☆' * (5 - estrelas)}</p>
-
-        </div>
-
-        """
-
-    html_content += '</section>\n'
-
-
-
-# Finalizar HTML
-
-html_content += """
-
-  </main>
-
-  <footer>
-
-    <p>Feito com 💜 por amantes de romances | © 2025</p>
-
-  </footer>
-
-</body>
-
-</html>
-
