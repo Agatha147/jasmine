@@ -7,34 +7,276 @@
 
 <style>
 :root {
-  --bg: #0f0f1a;
-  --card: #1b1b2f;
-  --text: #ffffff;
-  --accent: #6c63ff;
+  --bg:#0f0f1a;
+  --card:#1b1b2f;
+  --text:#fff;
+  --accent:#6c63ff;
 }
 
 body.light {
-  --bg: #f4f4f8;
-  --card: #ffffff;
-  --text: #111;
+  --bg:#f4f4f8;
+  --card:#fff;
+  --text:#111;
 }
 
 body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.3s;
+  margin:0;
+  font-family:Segoe UI, sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
 header {
-  text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(135deg,#6c63ff,#3a2fd8);
+  text-align:center;
+  padding:40px 20px;
+  background:linear-gradient(135deg,#6c63ff,#3a2fd8);
 }
 
-h1 { margin: 0; font-size: 2.5rem; }
+.controls {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+}
 
+input {
+  padding:12px;
+  border-radius:30px;
+  border:none;
+  width:280px;
+}
+
+button {
+  border:none;
+  padding:10px 16px;
+  border-radius:20px;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.tabs {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  padding:20px;
+}
+
+.tabs button { background:#2a2a4a; }
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.card {
+  background:var(--card);
+  border-radius:14px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+}
+
+.card h3 { margin:0 0 10px; font-size:1rem; }
+
+footer {
+  text-align:center;
+  padding:30px;
+  opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 BookVerso</h1>
+  <p>Seu universo literário</p>
+
+  <div class="controls">
+    <input id="search" placeholder="Buscar livro..." onkeyup="buscar()">
+    <button onclick="toggleModo()">🌙/☀️</button>
+    <button onclick="mostrarFavoritos()">❤️ Favoritos</button>
+    <button onclick="mostrarGenero('todos')">📚 Todos</button>
+  </div>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="grid" id="grid"></div>
+
+<footer>BookVerso © 2026</footer>
+
+<script>
+const livros = {
+  "Fantasia":[
+    "O Senhor dos Anéis","O Hobbit","As Crônicas de Nárnia","Harry Potter 1",
+    "Harry Potter 2","Harry Potter 3","Harry Potter 4","Harry Potter 5",
+    "Harry Potter 6","Harry Potter 7","Eragon","O Nome do Vento",
+    "A Guerra dos Tronos","A Fúria dos Reis","A Tormenta de Espadas"
+  ],
+
+  "Ficção Científica":[
+    "Duna","Fundação","Neuromancer","Eu, Robô","O Guia do Mochileiro das Galáxias",
+    "Ender's Game","Fahrenheit 451","Snow Crash","Hyperion","Blade Runner",
+    "Admirável Mundo Novo","A Máquina do Tempo","Contato","Solaris","O Marciano"
+  ],
+
+  "Clássicos":[
+    "Dom Quixote","Orgulho e Preconceito","Crime e Castigo",
+    "Os Miseráveis","O Morro dos Ventos Uivantes","Drácula",
+    "Frankenstein","Anna Karenina","Madame Bovary","O Conde de Monte Cristo",
+    "Guerra e Paz","Jane Eyre","A Divina Comédia","Hamlet","Macbeth"
+  ],
+
+  "Mistério":[
+    "Assassinato no Expresso do Oriente","O Caso dos Dez Negrinhos",
+    "Sherlock Holmes: Um Estudo em Vermelho","O Silêncio dos Inocentes",
+    "Garota Exemplar","A Garota no Trem","Código Da Vinci",
+    "Anjos e Demônios","O Nome da Rosa","Rebecca",
+    "Os Homens que Não Amavam as Mulheres","Inferno","O Símbolo Perdido",
+    "Morte no Nilo","O Cão dos Baskervilles"
+  ],
+
+  "Romance":[
+    "Como Eu Era Antes de Você","A Culpa é das Estrelas","Diário de uma Paixão",
+    "Eleanor & Park","Simplesmente Acontece","Um Dia",
+    "Os Sete Maridos de Evelyn Hugo","P.S. Eu Te Amo",
+    "Amor & Gelato","Orgulho e Preconceito","Persuasão",
+    "Razão e Sensibilidade","Outlander","O Morro dos Ventos Uivantes",
+    "Anna e o Beijo Francês"
+  ],
+
+  "Terror":[
+    "It","O Iluminado","Cemitério Maldito","Carrie",
+    "A Assombração da Casa da Colina","Drácula","Frankenstein",
+    "Bird Box","O Chamado de Cthulhu","Entrevista com o Vampiro",
+    "Psicose","Hell House","A Hora do Vampiro",
+    "O Exorcista","O Médico e o Monstro"
+  ],
+
+  "Não Ficção":[
+    "Sapiens","Homo Deus","21 Lições para o Século 21",
+    "O Poder do Hábito","Mindset","Pai Rico Pai Pobre",
+    "Como Fazer Amigos","A Arte da Guerra","O Príncipe",
+    "Breves Respostas para Grandes Questões",
+    "Uma Breve História do Tempo","Steve Jobs",
+    "Diário de Anne Frank","Educated","Atomic Habits"
+  ],
+
+  "Literatura Brasileira":[
+    "Dom Casmurro","Memórias Póstumas de Brás Cubas",
+    "O Cortiço","Capitães da Areia","Grande Sertão: Veredas",
+    "Vidas Secas","Iracema","Senhora","Macunaíma",
+    "A Hora da Estrela","Quarto de Despejo",
+    "Sagarana","O Alienista","Lucíola","Til"
+  ],
+
+  "Juvenil":[
+    "Jogos Vorazes","Em Chamas","A Esperança",
+    "Divergente","Insurgente","Convergente",
+    "Maze Runner","Prova de Fogo","Cura Mortal",
+    "Percy Jackson 1","Percy Jackson 2","Percy Jackson 3",
+    "Percy Jackson 4","Percy Jackson 5","Artemis Fowl"
+  ],
+
+  "Filosofia":[
+    "Assim Falou Zaratustra","A República",
+    "O Banquete","Crítica da Razão Pura",
+    "Meditações","O Mito de Sísifo",
+    "Ser e Nada","Além do Bem e do Mal",
+    "Ética a Nicômaco","O Mundo de Sofia",
+    "Discurso do Método","Leviatã",
+    "O Contrato Social","Genealogia da Moral","A Gaia Ciência"
+  ]
+}
+
+let generoAtual = "todos"
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+
+const grid = document.getElementById("grid")
+const tabs = document.getElementById("tabs")
+
+function criarTabs() {
+  for (let g in livros) {
+    const b = document.createElement("button")
+    b.textContent = g
+    b.onclick = () => mostrarGenero(g)
+    tabs.appendChild(b)
+  }
+}
+
+function mostrarGenero(g) {
+  generoAtual = g
+  render()
+}
+
+function render() {
+  grid.innerHTML = ""
+  for (let g in livros) {
+    if (generoAtual !== "todos" && g !== generoAtual) continue
+
+    livros[g].forEach(titulo => criarCard(titulo))
+  }
+}
+
+function criarCard(titulo) {
+  const card = document.createElement("div")
+  card.className = "card"
+
+  const h = document.createElement("h3")
+  h.textContent = titulo
+
+  const btn = document.createElement("button")
+  btn.textContent = favoritos.includes(titulo) ? "💖 Favorito" : "❤️ Favoritar"
+  btn.onclick = () => favoritar(titulo, btn)
+
+  card.appendChild(h)
+  card.appendChild(btn)
+  grid.appendChild(card)
+}
+
+function favoritar(titulo, btn) {
+  if (favoritos.includes(titulo)) {
+    favoritos = favoritos.filter(t => t !== titulo)
+    btn.textContent = "❤️ Favoritar"
+  } else {
+    favoritos.push(titulo)
+    btn.textContent = "💖 Favorito"
+  }
+  localStorage.setItem("favoritos", JSON.stringify(favoritos))
+}
+
+function mostrarFavoritos() {
+  grid.innerHTML = ""
+  favoritos.forEach(t => criarCard(t))
+}
+
+function buscar() {
+  const termo = document.getElementById("search").value.toLowerCase()
+  grid.innerHTML = ""
+
+  for (let g in livros) {
+    livros[g].forEach(t => {
+      if (t.toLowerCase().includes(termo)) criarCard(t)
+    })
+  }
+}
+
+function toggleModo() {
+  document.body.classList.toggle("light")
+}
+
+criarTabs()
+render()
+</script>
+
+</body>
+</html>
 .controls {
   display: flex;
   justify-content: center;
