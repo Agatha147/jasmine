@@ -126,639 +126,33 @@ footer {
 <footer>BookVerso © 2026</footer>
 
 <script>
+src="js/script.js"
 
 
-const livros = {
+const generos = [
+  "Fantasia","Romance","Ficção Científica","Clássicos",
+  "Terror","Mistério","Não Ficção","Filosofia",
+  "Literatura Brasileira","Juvenil"
+]
 
-  "Fantasia":[
+// 150 livros automáticos
+const livros = {}
 
-    {
-      titulo:"A roda do tempo: O olho do mundo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
+generos.forEach(g => {
+  livros[g] = []
 
-    {
-      titulo:"O último desejo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:" A Espada do destino",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
+  for (let i = 1; i <= 15; i++) {
 
-    {
-      titulo:" O caminho dos reis",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"Palavras de Radiância",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
+    livros[g].push({
+      titulo: `${g} — Livro ${i}`,
+      img: `https://picsum.photos/200/300?random=${g+i}`,
+      sinopse: "Uma história envolvente cheia de drama, mistério ou magia.",
+      nota: 0,
+      status: "quero" // quero | lendo | lido
+    })
 
-    {
-      titulo:"O Império Final,
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
   }
-  {
-      titulo:"O poço de ascensão",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O herói das eras",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE "
-
-    {
-      titulo:"O feiticeiro de terramar",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-      
-    {
-      titulo:"A tumba do Imperador",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-
-  ],
-
-  "Romance":[
-    {
-      titulo:"Razão sensibilidade",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Persuasão",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"Ana e o Beijo Francês",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Teto para dois",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"Vermelho, Branco e Sangue Azul",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    {
-      titulo:"Me chame pelo seu nome",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A hipótese do amor",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"Depois de você",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A cinco passos de você"
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"Ainda sou eu",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    {
-      titulo:"Como eu era antes de você",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-
-  ]
-    
-  "Ficção Científica":[
-
-    {
-      titulo:"A Guerra dos velho",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A guerra interminável",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"Jogador N°1,
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Fim da Infância"
-     img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"As Estrelas, Meu Destino"
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Problema dos Três Corpos",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"A Floresta Sombria",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    titulo:"O fim da morte",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"Perdido em marte",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O homemdo Castelo Alto",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-
-
-  ],
-
-  
-  "Clássicos":[
-
-    {
-      titulo:"O Retrato de Dorian Gray",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Os Irmãos Karamázov",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"O Idiota",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Metamorfose",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"O Processo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Letra Escarlate",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"Moby Dick",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Robinson Crusoé",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"A Ilíada",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Odisséia",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-  
-
-  ],
-
-  
-  "Terror":[
-
-    {
-      titulo:"Coisa na Porta
-",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Horror de Dunwich",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"A Cor que Caiu do Espaço",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Chamado de Cthulhu",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"Entrevista com o Vampiro",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Rainha dos Condenados",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"O Vampiro Lestat",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Hell House",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"O Ritual",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Caixa de Pássaros",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-  
-
-  
-  "Mistério":[
-
-    {
-      titulo:"Um Corpo na Biblioteca,
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Os Cinco Porquinhos",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"A Casa Torta",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Morte na Mesopotâmia",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"O Silêncio dos Inocentes",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Hannibal",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"O Colecionador",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Paciente Silenciosa",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"Antes de Dormir",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Chamado do Cuco",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }."
-
-  ],
-
-  
-  "Não Ficção":[
-
-    {
-      titulo:Factfulness",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Rápido e Devagar",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"O Gene Egoísta",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Armas, Germes e Aço",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"O Andar do Bêbado",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Cérebro Autista",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"O Cérebro Autista",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Poder do Agora",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"Essencialismo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Deep Work",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-  {
-      titulo:" Coragem de Ser Imperfeito",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    
-  ],
-
-  
-  "Filosofia":[
-
-    {
-      titulo:"Apologia de Sócrates",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Fedro",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"Ética",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Tratado Teológico-Político",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  
-
-    {
-      titulo:"O Ser e o Nada",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"O Existencialismo é um Humanismo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Sociedade do Cansaço",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"O Mal-Estar na Civilização",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Totem e Tabu",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-  {
-      titulo:"A Interpretação dos Sonhos",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-  ],
-
-  
-  "Literatura Brasileira":[
-
-    {
-      titulo:"São Bernardo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Angústia",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"O Quinze",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Menino de Engenho",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"Fogo Morto",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Dois Irmãos",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"Nove Noites",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Paixão Segundo G.H",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"Laços de Família",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Feliz Ano Novo",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-
-  ],
-
-  
-  "Juvenil":[
-
-    {
-      titulo:"O Ladrão de Raios",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Mar de Monstros
-",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-    {
-      titulo:"A Maldição do Titã",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Batalha do Labirinto",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-        }
-  {
-      titulo:"O Último Olimpiano",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"O Último Olimpiano",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"A Seleção",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"A Elite",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-  }
-  {
-      titulo:"A Escolha",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    {
-      titulo:"Estilhaça-me",
-      img:"URL_DA_IMAGEM",
-      sinopse:"SINOPSE DO LIVRO."
-    }
-  {
-      titulo:"Liberta-me",
-      img:"URL_DA_IMAGEM",
-      sinopse:"COLE A SINOPSE AQUI."
-    },
-
-    
-
-  ],
-
-
-
-
-
+})
 
 
 let generoAtual = "todos"
@@ -856,6 +250,68 @@ function toggleModo() {
 
 criarTabs()
 render()
+  function criarCard(livro) {
+
+  const card = document.createElement("div")
+  card.className = "card"
+
+  const img = document.createElement("img")
+  img.src = livro.img
+
+  const h = document.createElement("h3")
+  h.textContent = livro.titulo
+
+  const p = document.createElement("p")
+  p.textContent = livro.sinopse
+
+  // ⭐ ESTRELAS
+  const estrelas = document.createElement("div")
+
+  for (let i = 1; i <= 5; i++) {
+    const s = document.createElement("span")
+    s.textContent = i <= livro.nota ? "⭐" : "☆"
+    s.style.cursor = "pointer"
+
+    s.onclick = () => {
+      livro.nota = i
+      render()
+    }
+
+    estrelas.appendChild(s)
+  }
+
+  // 📖 STATUS
+  const select = document.createElement("select")
+
+  const opcoes = [
+    ["quero","📚 Quero ler"],
+    ["lendo","👀 Lendo"],
+    ["lido","✅ Lido"]
+  ]
+
+  opcoes.forEach(([val, txt]) => {
+    const o = document.createElement("option")
+    o.value = val
+    o.textContent = txt
+    if (livro.status === val) o.selected = true
+    select.appendChild(o)
+  })
+
+  select.onchange = () => livro.status = select.value
+
+  // ❤️ FAVORITO
+  const btn = document.createElement("button")
+
+  btn.textContent = favoritos.includes(livro.titulo)
+    ? "💖 Favorito"
+    : "❤️ Favoritar"
+
+  btn.onclick = () => favoritar(livro.titulo, btn)
+
+  card.append(img, h, p, estrelas, select, btn)
+  grid.appendChild(card)
+    }
+  
 
 </script>
 
