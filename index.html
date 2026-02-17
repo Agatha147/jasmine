@@ -275,34 +275,31 @@ function toggleModo() {
   document.body.classList.toggle("light")
 }
 
-criarTabs()
-render()
-  function criarCard(livro) {
+function criarTabs() {
 
-  const card = document.createElement("div")
-  card.className = "card"
+  // botão voltar
+  const home = document.createElement("button")
+  home.textContent = "🏠 Início"
+  home.onclick = () => {
+    mostrarPagina(paginaGenero)
+    generoAtual = "todos"
+    render()
+  }
+  tabs.appendChild(home)
 
-  const img = document.createElement("img")
-  img.src = livro.img
+  for (let g in livros) {
 
-  const h = document.createElement("h3")
-  h.textContent = livro.titulo
+    const b = document.createElement("button")
+    b.textContent = g
 
-  const p = document.createElement("p")
-  p.textContent = livro.sinopse
-
-  // ⭐ ESTRELAS
-  const estrelas = document.createElement("div")
-
-  for (let i = 1; i <= 5; i++) {
-    const s = document.createElement("span")
-    s.textContent = i <= livro.nota ? "⭐" : "☆"
-    s.style.cursor = "pointer"
-
-    s.onclick = () => {
-      livro.nota = i
-      render()
+    b.onclick = () => {
+      mostrarPagina(paginaGenero)
+      mostrarGenero(g)
     }
+
+    tabs.appendChild(b)
+  }
+  }
 
     estrelas.appendChild(s)
   }
@@ -316,28 +313,8 @@ render()
     ["lido","✅ Lido"]
   ]
 
-  opcoes.forEach(([val, txt]) => {
-    const o = document.createElement("option")
-    o.value = val
-    o.textContent = txt
-    if (livro.status === val) o.selected = true
-    select.appendChild(o)
-  })
+  
 
-  select.onchange = () => livro.status = select.value
-
-  // ❤️ FAVORITO
-  const btn = document.createElement("button")
-
-  btn.textContent = favoritos.includes(livro.titulo)
-    ? "💖 Favorito"
-    : "❤️ Favoritar"
-
-  btn.onclick = () => favoritar(livro.titulo, btn)
-
-  card.append(img, h, p, estrelas, select, btn)
-  grid.appendChild(card)
-    }
   
 <button class="fab" onclick="irParaStatus()">📚</button>
 </script>
