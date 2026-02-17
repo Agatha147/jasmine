@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BookVerso</title>
-  <style>
+
+<style>
 :root {
   --bg:#0f0f1a;
   --card:#1b1b2f;
@@ -81,7 +82,21 @@ button {
   flex-direction:column;
 }
 
-.card h3 { margin:0 0 10px; font-size:1rem; }
+.card img {
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.card h3 { margin:0 0 6px; font-size:1rem; }
+
+.card p {
+  font-size:0.9rem;
+  opacity:0.85;
+  margin-bottom:10px;
+}
 
 footer {
   text-align:center;
@@ -90,7 +105,6 @@ footer {
 }
 </style>
 </head>
-
 
 <body>
 
@@ -112,88 +126,192 @@ footer {
 <footer>BookVerso © 2026</footer>
 
 <script>
+
+/* =========================
+   👇 AQUI VOCÊ SÓ EDITA LIVROS
+   ========================= */
+
 const livros = {
+
   "Fantasia":[
-    "O Senhor dos Anéis","O Hobbit","As Crônicas de Nárnia","Harry Potter 1",
-    "Harry Potter 2","Harry Potter 3","Harry Potter 4","Harry Potter 5",
-    "Harry Potter 6","Harry Potter 7","Eragon","O Nome do Vento",
-    "A Guerra dos Tronos","A Fúria dos Reis","A Tormenta de Espadas"
-  ],
 
-  "Ficção Científica":[
-    "Duna","Fundação","Neuromancer","Eu, Robô","O Guia do Mochileiro das Galáxias",
-    "Ender's Game","Fahrenheit 451","Snow Crash","Hyperion","Blade Runner",
-    "Admirável Mundo Novo","A Máquina do Tempo","Contato","Solaris","O Marciano"
-  ],
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
 
-  "Clássicos":[
-    "Dom Quixote","Orgulho e Preconceito","Crime e Castigo",
-    "Os Miseráveis","O Morro dos Ventos Uivantes","Drácula",
-    "Frankenstein","Anna Karenina","Madame Bovary","O Conde de Monte Cristo",
-    "Guerra e Paz","Jane Eyre","A Divina Comédia","Hamlet","Macbeth"
-  ],
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+    }
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
 
-  "Mistério":[
-    "Assassinato no Expresso do Oriente","O Caso dos Dez Negrinhos",
-    "Sherlock Holmes: Um Estudo em Vermelho","O Silêncio dos Inocentes",
-    "Garota Exemplar","A Garota no Trem","Código Da Vinci",
-    "Anjos e Demônios","O Nome da Rosa","Rebecca",
-    "Os Homens que Não Amavam as Mulheres","Inferno","O Símbolo Perdido",
-    "Morte no Nilo","O Cão dos Baskervilles"
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+        }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+  }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+  }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+    }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+    }
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+        }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+
   ],
 
   "Romance":[
-    "Como Eu Era Antes de Você","A Culpa é das Estrelas","Diário de uma Paixão",
-    "Eleanor & Park","Simplesmente Acontece","Um Dia",
-    "Os Sete Maridos de Evelyn Hugo","P.S. Eu Te Amo",
-    "Amor & Gelato","Orgulho e Preconceito","Persuasão",
-    "Razão e Sensibilidade","Outlander","O Morro dos Ventos Uivantes",
-    "Anna e o Beijo Francês"
-  ],
 
-  "Terror":[
-    "It","O Iluminado","Cemitério Maldito","Carrie",
-    "A Assombração da Casa da Colina","Drácula","Frankenstein",
-    "Bird Box","O Chamado de Cthulhu","Entrevista com o Vampiro",
-    "Psicose","Hell House","A Hora do Vampiro",
-    "O Exorcista","O Médico e o Monstro"
-  ],
+    {
+      titulo:"EXEMPLO DE ROMANCE",
+      img:"URL_DA_IMAGEM",
+      sinopse:"DESCRIÇÃO DO LIVRO."
+    }
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
 
-  "Não Ficção":[
-    "Sapiens","Homo Deus","21 Lições para o Século 21",
-    "O Poder do Hábito","Mindset","Pai Rico Pai Pobre",
-    "Como Fazer Amigos","A Arte da Guerra","O Príncipe",
-    "Breves Respostas para Grandes Questões",
-    "Uma Breve História do Tempo","Steve Jobs",
-    "Diário de Anne Frank","Educated","Atomic Habits"
-  ],
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+    }
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
 
-  "Literatura Brasileira":[
-    "Dom Casmurro","Memórias Póstumas de Brás Cubas",
-    "O Cortiço","Capitães da Areia","Grande Sertão: Veredas",
-    "Vidas Secas","Iracema","Senhora","Macunaíma",
-    "A Hora da Estrela","Quarto de Despejo",
-    "Sagarana","O Alienista","Lucíola","Til"
-  ],
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+        }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
 
-  "Juvenil":[
-    "Jogos Vorazes","Em Chamas","A Esperança",
-    "Divergente","Insurgente","Convergente",
-    "Maze Runner","Prova de Fogo","Cura Mortal",
-    "Percy Jackson 1","Percy Jackson 2","Percy Jackson 3",
-    "Percy Jackson 4","Percy Jackson 5","Artemis Fowl"
-  ],
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+    }
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
 
-  "Filosofia":[
-    "Assim Falou Zaratustra","A República",
-    "O Banquete","Crítica da Razão Pura",
-    "Meditações","O Mito de Sísifo",
-    "Ser e Nada","Além do Bem e do Mal",
-    "Ética a Nicômaco","O Mundo de Sofia",
-    "Discurso do Método","Leviatã",
-    "O Contrato Social","Genealogia da Moral","A Gaia Ciência"
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+        }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+    }
+    {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+    },
+
+    {
+      titulo:"OUTRO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"SINOPSE DO LIVRO."
+        }
+  {
+      titulo:"NOME DO LIVRO",
+      img:"URL_DA_IMAGEM",
+      sinopse:"COLE A SINOPSE AQUI."
+
   ]
+
 }
+
+/* =========================
+   🚫 NÃO MEXER DAQUI PRA BAIXO
+   ========================= */
 
 let generoAtual = "todos"
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
@@ -219,24 +337,36 @@ function render() {
   grid.innerHTML = ""
   for (let g in livros) {
     if (generoAtual !== "todos" && g !== generoAtual) continue
-
-    livros[g].forEach(titulo => criarCard(titulo))
+    livros[g].forEach(livro => criarCard(livro))
   }
 }
 
-function criarCard(titulo) {
+function criarCard(livro) {
+
   const card = document.createElement("div")
   card.className = "card"
 
+  const img = document.createElement("img")
+  img.src = livro.img
+
   const h = document.createElement("h3")
-  h.textContent = titulo
+  h.textContent = livro.titulo
+
+  const p = document.createElement("p")
+  p.textContent = livro.sinopse
 
   const btn = document.createElement("button")
-  btn.textContent = favoritos.includes(titulo) ? "💖 Favorito" : "❤️ Favoritar"
-  btn.onclick = () => favoritar(titulo, btn)
+  btn.textContent = favoritos.includes(livro.titulo)
+    ? "💖 Favorito"
+    : "❤️ Favoritar"
 
+  btn.onclick = () => favoritar(livro.titulo, btn)
+
+  card.appendChild(img)
   card.appendChild(h)
+  card.appendChild(p)
   card.appendChild(btn)
+
   grid.appendChild(card)
 }
 
@@ -253,7 +383,11 @@ function favoritar(titulo, btn) {
 
 function mostrarFavoritos() {
   grid.innerHTML = ""
-  favoritos.forEach(t => criarCard(t))
+  for (let g in livros) {
+    livros[g].forEach(livro => {
+      if (favoritos.includes(livro.titulo)) criarCard(livro)
+    })
+  }
 }
 
 function buscar() {
@@ -261,8 +395,9 @@ function buscar() {
   grid.innerHTML = ""
 
   for (let g in livros) {
-    livros[g].forEach(t => {
-      if (t.toLowerCase().includes(termo)) criarCard(t)
+    livros[g].forEach(livro => {
+      if (livro.titulo.toLowerCase().includes(termo))
+        criarCard(livro)
     })
   }
 }
@@ -273,8 +408,8 @@ function toggleModo() {
 
 criarTabs()
 render()
+
 </script>
 
 </body>
 </html>
-
