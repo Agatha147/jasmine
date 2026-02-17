@@ -2,321 +2,301 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BookVerso</title>
 
 <style>
-:root {
-  --bg:#0f0f1a;
-  --card:#1b1b2f;
-  --text:#fff;
-  --accent:#6c63ff;
+
+:root{
+  --bg:#121212;
+  --text:#f1f1f1;
+  --card:#1e1e1e;
 }
 
-body.light {
-  --bg:#f4f4f8;
-  --card:#fff;
-  --text:#111;
-}
-
-body {
+body{
   margin:0;
-  font-family:Segoe UI, sans-serif;
+  font-family:Arial, sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
-header {
+header{
   text-align:center;
-  padding:40px 20px;
-  background:linear-gradient(135deg,#6c63ff,#3a2fd8);
-}
-
-.controls {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-  margin-top:20px;
-}
-
-input {
-  padding:12px;
-  border-radius:30px;
-  border:none;
-  width:280px;
-}
-
-button {
-  border:none;
-  padding:10px 16px;
-  border-radius:20px;
-  background:var(--accent);
-  color:white;
-  cursor:pointer;
+  padding:20px;
+  font-size:26px;
   font-weight:bold;
 }
 
-.tabs {
+.tabs{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-  padding:20px;
+  overflow:auto;
+  gap:8px;
+  padding:10px;
+  background:#1a1a1a;
 }
 
-.tabs button { background:#2a2a4a; }
+.tabs button{
+  padding:8px 14px;
+  border:none;
+  border-radius:20px;
+  background:#2a2a2a;
+  color:white;
+  cursor:pointer;
+  white-space:nowrap;
+}
 
-.grid {
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  padding:20px;
-}
-
-.card {
-  background:var(--card);
-  border-radius:14px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:16px;
   padding:16px;
-  display:flex;
-  flex-direction:column;
 }
 
-.card img {
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+}
+
+.card img{
   width:100%;
-  height:260px;
-  object-fit:cover;
-  border-radius:10px;
-  margin-bottom:10px;
+  border-radius:8px;
 }
 
-.card h3 { margin:0 0 6px; font-size:1rem; }
-
-.card p {
-  font-size:0.9rem;
-  opacity:0.85;
-  margin-bottom:10px;
+.card h3{
+  font-size:16px;
+  margin:8px 0;
 }
-  .page { display:none; }
 
-.page.active { display:block; }
+.card p{
+  font-size:13px;
+  opacity:.8;
+}
 
-.fab {
+select{
+  margin-top:6px;
+  padding:4px;
+  border-radius:6px;
+}
+
+.page{display:none;}
+.page.active{display:block;}
+
+.fab{
   position:fixed;
   bottom:20px;
   right:20px;
-  padding:16px 18px;
+  padding:16px;
   border-radius:50%;
   font-size:20px;
-  background:var(--bg); /* mesma cor do fundo */
+  background:var(--bg);
   color:var(--text);
   border:2px solid var(--text);
   cursor:pointer;
-  box-shadow:0 4px 12px rgba(0,0,0,.4);
 }
 
-footer {
-  text-align:center;
-  padding:30px;
-  opacity:0.7;
-}
 </style>
 </head>
-
 <body>
 
-<header>
-  <h1>📚 BookVerso</h1>
-  <p>Seu universo literário</p>
-
-  <div class="controls">
-    <input id="search" placeholder="Buscar livro..." onkeyup="buscar()">
-    <button onclick="toggleModo()">🌙/☀️</button>
-    <button onclick="mostrarFavoritos()">❤️ Favoritos</button>
-    <button onclick="mostrarGenero('todos')">📚 Todos</button>
-  </div>
-</header>
+<header>📚 BookVerso</header>
 
 <div class="tabs" id="tabs"></div>
 
-<!-- Página do gênero -->
 <div id="paginaGenero" class="page active">
   <div class="grid" id="gridGenero"></div>
 </div>
 
-<!-- Página status -->
 <div id="paginaStatus" class="page">
   <h2 style="text-align:center">📖 Minha Estante</h2>
   <div class="grid" id="gridStatus"></div>
 </div>
 
-<footer>BookVerso © 2026</footer>
+<button class="fab" onclick="irParaStatus()">📚</button>
 
 <script>
-src="js/script.js"
 
+const livros = {
 
-const generos = [
-  "Fantasia","Romance","Ficção Científica","Clássicos",
-  "Terror","Mistério","Não Ficção","Filosofia",
-  "Literatura Brasileira","Juvenil"
+"Juvenil":[
+{
+titulo:"Percy Jackson",
+img:"https://m.media-amazon.com/images/I/81ibfYk4qmL.jpg",
+sinopse:"Um garoto descobre que é filho de Poseidon e precisa salvar o mundo.",
+nota:0,
+status:"quero"
+},
+{
+titulo:"Harry Potter",
+img:"https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg",
+sinopse:"Um menino descobre que é um bruxo e vai estudar em Hogwarts.",
+nota:0,
+status:"quero"
+}
+],
+
+"Romance":[
+{
+titulo:"Orgulho e Preconceito",
+img:"https://m.media-amazon.com/images/I/81OthjkJBuL.jpg",
+sinopse:"Elizabeth Bennet enfrenta preconceitos enquanto descobre o amor.",
+nota:0,
+status:"quero"
+}
+],
+
+"Fantasia":[
+{
+titulo:"O Hobbit",
+img:"https://m.media-amazon.com/images/I/91b0C2YNSrL.jpg",
+sinopse:"Bilbo Bolseiro parte numa aventura inesperada com anões e um mago.",
+nota:0,
+status:"quero"
+}
 ]
 
-// 150 livros automáticos
-const livros = {}
+}
 
-generos.forEach(g => {
-  livros[g] = []
-
-  for (let i = 1; i <= 15; i++) {
-
-    livros[g].push({
-      titulo: `${g} — Livro ${i}`,
-      img: `https://picsum.photos/200/300?random=${g+i}`,
-      sinopse: "Uma história envolvente cheia de drama, mistério ou magia.",
-      nota: 0,
-      status: "quero" // quero | lendo | lido
-    })
-
-  }
-})
-
+const tabs = document.getElementById("tabs")
+const gridGenero = document.getElementById("gridGenero")
+const gridStatus = document.getElementById("gridStatus")
+const paginaGenero = document.getElementById("paginaGenero")
+const paginaStatus = document.getElementById("paginaStatus")
 
 let generoAtual = "todos"
-let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
 
-const grid = document.getElementById("grid")
-const tabs = document.getElementById("tabs")
-
-function criarTabs() {
-  for (let g in livros) {
-    const b = document.createElement("button")
-    b.textContent = g
-    b.onclick = () => mostrarGenero(g)
-    tabs.appendChild(b)
-  }
+function mostrarPagina(p){
+  document.querySelectorAll(".page")
+    .forEach(pg=>pg.classList.remove("active"))
+  p.classList.add("active")
 }
 
-function mostrarGenero(g) {
-  generoAtual = g
-  render()
-}
+function criarTabs(){
 
-function render() {
-  grid.innerHTML = ""
-  for (let g in livros) {
-    if (generoAtual !== "todos" && g !== generoAtual) continue
-    livros[g].forEach(livro => criarCard(livro))
-  }
-}
-
-function criarCard(livro) {
-
-  const card = document.createElement("div")
-  card.className = "card"
-
-  const img = document.createElement("img")
-  img.src = livro.img
-
-  const h = document.createElement("h3")
-  h.textContent = livro.titulo
-
-  const p = document.createElement("p")
-  p.textContent = livro.sinopse
-
-  const btn = document.createElement("button")
-  btn.textContent = favoritos.includes(livro.titulo)
-    ? "💖 Favorito"
-    : "❤️ Favoritar"
-
-  btn.onclick = () => favoritar(livro.titulo, btn)
-
-  card.appendChild(img)
-  card.appendChild(h)
-  card.appendChild(p)
-  card.appendChild(btn)
-
-  grid.appendChild(card)
-}
-
-function favoritar(titulo, btn) {
-  if (favoritos.includes(titulo)) {
-    favoritos = favoritos.filter(t => t !== titulo)
-    btn.textContent = "❤️ Favoritar"
-  } else {
-    favoritos.push(titulo)
-    btn.textContent = "💖 Favorito"
-  }
-  localStorage.setItem("favoritos", JSON.stringify(favoritos))
-}
-
-function mostrarFavoritos() {
-  grid.innerHTML = ""
-  for (let g in livros) {
-    livros[g].forEach(livro => {
-      if (favoritos.includes(livro.titulo)) criarCard(livro)
-    })
-  }
-}
-
-function buscar() {
-  const termo = document.getElementById("search").value.toLowerCase()
-  grid.innerHTML = ""
-
-  for (let g in livros) {
-    livros[g].forEach(livro => {
-      if (livro.titulo.toLowerCase().includes(termo))
-        criarCard(livro)
-    })
-  }
-}
-
-function toggleModo() {
-  document.body.classList.toggle("light")
-}
-
-function criarTabs() {
-
-  // botão voltar
   const home = document.createElement("button")
-  home.textContent = "🏠 Início"
-  home.onclick = () => {
+  home.textContent="🏠 Início"
+  home.onclick=()=>{
     mostrarPagina(paginaGenero)
-    generoAtual = "todos"
+    generoAtual="todos"
     render()
   }
   tabs.appendChild(home)
 
-  for (let g in livros) {
-
-    const b = document.createElement("button")
-    b.textContent = g
-
-    b.onclick = () => {
+  for(let g in livros){
+    const b=document.createElement("button")
+    b.textContent=g
+    b.onclick=()=>{
       mostrarPagina(paginaGenero)
       mostrarGenero(g)
     }
-
     tabs.appendChild(b)
   }
-  }
 
+}
+
+function criarCard(livro, destino){
+
+  const card=document.createElement("div")
+  card.className="card"
+
+  const img=document.createElement("img")
+  img.src=livro.img
+
+  const h=document.createElement("h3")
+  h.textContent=livro.titulo
+
+  const p=document.createElement("p")
+  p.textContent=livro.sinopse
+
+  const estrelas=document.createElement("div")
+
+  for(let i=1;i<=5;i++){
+    const s=document.createElement("span")
+    s.textContent=i<=livro.nota?"⭐":"☆"
+    s.style.cursor="pointer"
+    s.onclick=()=>{livro.nota=i; render()}
     estrelas.appendChild(s)
   }
 
-  // 📖 STATUS
-  const select = document.createElement("select")
+  const select=document.createElement("select")
 
-  const opcoes = [
+  const opcoes=[
     ["quero","📚 Quero ler"],
     ["lendo","👀 Lendo"],
     ["lido","✅ Lido"]
   ]
 
-  
+  opcoes.forEach(([val,txt])=>{
+    const o=document.createElement("option")
+    o.value=val
+    o.textContent=txt
+    if(livro.status===val)o.selected=true
+    select.appendChild(o)
+  })
 
-  
-<button class="fab" onclick="irParaStatus()">📚</button>
+  select.onchange=()=>livro.status=select.value
+
+  card.append(img,h,p,estrelas,select)
+  destino.appendChild(card)
+
+}
+
+function render(){
+
+  gridGenero.innerHTML=""
+
+  if(generoAtual==="todos"){
+    for(let g in livros){
+      livros[g].forEach(l=>criarCard(l,gridGenero))
+    }
+  }else{
+    livros[generoAtual].forEach(l=>criarCard(l,gridGenero))
+  }
+
+}
+
+function mostrarGenero(g){
+  generoAtual=g
+  render()
+}
+
+function irParaStatus(){
+  mostrarPagina(paginaStatus)
+  renderStatus()
+}
+
+function renderStatus(){
+
+  gridStatus.innerHTML=""
+
+  const ordem=["quero","lendo","lido"]
+
+  ordem.forEach(st=>{
+
+    const titulo=document.createElement("h3")
+
+    titulo.textContent=
+      st==="quero"?"📚 Quero ler":
+      st==="lendo"?"👀 Lendo":
+      "✅ Lido"
+
+    gridStatus.appendChild(titulo)
+
+    for(let g in livros){
+      livros[g].forEach(l=>{
+        if(l.status===st)
+          criarCard(l,gridStatus)
+      })
+    }
+
+  })
+
+}
+
+criarTabs()
+render()
+
 </script>
 
 </body>
