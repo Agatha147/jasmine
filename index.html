@@ -1,345 +1,109 @@
- <!DOCTYPE html>
-<html lang="pt-BR">
+   
+      <!DOCTYPE html><html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BookVerso</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BookVerso — Romance • Terror • Suspense</title>
 <style>
-:root{
-  --bg:#0f172a;
-  --card:#1e293b;
-  --accent:#a78bfa;
-  --text:#e2e8f0;
-}
+  :root{
+    --bg:#121212;
+    --card:#1e1e1e;
+    --text:#f1f1f1;
+    --accent:#e11d48; /* vermelho dramático */
+  }
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+  header{background:#1a1a1a;padding:22px;text-align:center}
+  h1{margin:0;color:var(--accent)}
+  .sub{opacity:.85;font-size:14px}
+  main{max-width:1100px;margin:auto;padding:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
+  .book{background:var(--card);border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s}
+  .book:hover{transform:translateY(-5px) scale(1.02)}
+  .book img{width:100%;height:240px;object-fit:cover}
+  .info{padding:12px}
+  .titulo{font-weight:bold;font-size:15px}
+  .genero{font-size:12px;opacity:.75;margin-top:4px}/* Modal */ .modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;padding:20px} .modal-box{background:var(--card);max-width:520px;border-radius:14px;padding:20px} .modal-box h2{margin-top:0;color:var(--accent)} .fechar{margin-top:14px;background:var(--accent);border:none;color:#fff;padding:10px 16px;border-radius:8px;cursor:pointer} </style>
 
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-header{
-  padding:15px;
-  text-align:center;
-  font-size:22px;
-  background:#020617;
-}
-
-.menu{
-  display:flex;
-  gap:8px;
-  padding:12px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-button{
-  background:var(--accent);
-  border:none;
-  padding:8px 12px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.#listaLivros {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.card {
-  background: #1e1e2f;
-  border-radius: 12px;
-  padding: 12px;
-  text-align: center;
-  color: white;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.sinopse {
-  font-size: 14px;
-  margin: 8px 0;
-}
-
-.estrelas span {
-  font-size: 22px;
-  cursor: pointer;
-  color: gold;
-}
-.modal{
-  position:fixed;
-  inset:0;
-  background:#000a;
-  display:none;
-  align-items:center;
-  justify-content:center;
-}
-
-.modal-content{
-  background:var(--card);
-  padding:20px;
-  border-radius:16px;
-  width:90%;
-  max-width:400px;
-}
-</style>
 </head>
-
-<body>
-
-<header>📚 BookVerso</header>
-<div id="listaLivros"></div>
-<div class="menu">
-  <button onclick="mostrarGenero('Fantasia')">Fantasia</button>
-  <button onclick="mostrarGenero('Romance')">Romance</button>
-  <button onclick="mostrarGenero('Terror')">Terror</button>
-  <button onclick="mostrarGenero('Ficção Científica')">Ficção Científica</button>
-</div>
-
-<div class="grid" id="grid"></div>
-
-<!-- Modal Sinopse -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-    <button onclick="fechar()">Fechar</button>
+<body><header>
+  <h1>BookVerso</h1>
+  <div class="sub">Romance • Terror • Suspense</div>
+</header><main>
+  <div class="grid" id="grade"></div>
+</main><div class="modal" id="modal">
+  <div class="modal-box">
+    <h2 id="mTitulo"></h2>
+    <p id="mTexto"></p>
+    <button class="fechar" onclick="fechar()">Fechar</button>
   </div>
-</div>
+</div><script>
+const livros = [
+  // ROMANCE
+  {
+    titulo:"Como Eu Era Antes de Você",
+    genero:"Romance",
+    img:"https://covers.openlibrary.org/b/id/8155416-L.jpg",
+    sinopse:"Louisa começa a trabalhar como cuidadora de um homem tetraplégico e ambos transformam profundamente a vida um do outro." 
+  },
+  {
+    titulo:"A Culpa é das Estrelas",
+    genero:"Romance",
+    img:"https://covers.openlibrary.org/b/id/7267846-L.jpg",
+    sinopse:"Dois adolescentes com câncer se apaixonam e vivem uma história intensa sobre amor, dor e significado." 
+  },
 
-<script>
+  // TERROR
+  {
+    titulo:"It — A Coisa",
+    genero:"Terror",
+    img:"https://covers.openlibrary.org/b/id/8319256-L.jpg",
+    sinopse:"Um grupo de crianças enfrenta uma entidade maligna que assume a forma dos seus piores medos." 
+  },
+  {
+    titulo:"O Iluminado",
+    genero:"Terror psicológico",
+    img:"https://covers.openlibrary.org/b/id/8231996-L.jpg",
+    sinopse:"Isolado em um hotel durante o inverno, um homem enlouquece sob a influência de forças sobrenaturais." 
+  },
 
-// ===== LIVRO
-
-  const livros = {
-  Fantasia: [
-    {
-      id: "f1",
-      titulo: "O Senhor dos Anéis",
-      img: "https://covers.openlibrary.org/b/id/8231856-L.jpg",
-      sinopse: "Uma jornada épica para destruir um anel maligno.",
-      estrelas: 0
-    },
-    {
-      id: "f2",
-      titulo: "O Hobbit",
-      img: "https://covers.openlibrary.org/b/id/6979861-L.jpg",
-      sinopse: "Bilbo Bolseiro parte numa aventura inesperada.",
-      estrelas: 0
-    }
-  ],
-
-  Romance: [
-    {
-      id: "r1",
-      titulo: "Orgulho e Preconceito",
-      img: "https://covers.openlibrary.org/b/id/8091016-L.jpg",
-      sinopse: "Um clássico sobre amor e diferenças sociais.",
-      estrelas: 0
-    }
-  ],
-
-  Terror: [
-    {
-      id: "t1",
-      titulo: "It",
-      img: "https://covers.openlibrary.org/b/id/8225261-L.jpg",
-      sinopse: "Uma entidade maligna aterroriza uma cidade.",
-      estrelas: 0
-    }
-  ],
-
-  "Ficção Científica": [
-    {
-      id: "fc1",
-      titulo: "Duna",
-      img: "https://covers.openlibrary.org/b/id/8101356-L.jpg",
-      sinopse: "Conflitos políticos e ecológicos em um planeta desértico.",
-      estrelas: 0
-    }
-  ]
-};
-
-// ===== VARIÁVEIS =====
-
-let generoAtual = "Fantasia";
-const grid = document.getElementById("grid");
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDesc");
-
-// ===== MOSTRAR LIVROS =====
-
-function mostrarGenero(genero) {
-  const container = document.getElementById("listaLivros");
-  container.innerHTML = "";
-
-  livros[genero].forEach(livro => {
-
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <img src="${livro.img}" alt="${livro.titulo}">
-      <h3>${livro.titulo}</h3>
-
-      <p class="sinopse">${livro.sinopse}</p>
-
-      <div class="estrelas">
-        ${[1,2,3,4,5].map(n =>
-          `<span onclick="avaliar('${genero}','${livro.id}',${n})">
-             ${n <= livro.estrelas ? "★" : "☆"}
-           </span>`
-        ).join("")}
-      </div>
-    `;
-
-    container.appendChild(card);
-  });
-}
-// ===== AVALIAÇÃO =====
-
-function avaliar(genero, id, nota) {
-  const livro = livros[genero].find(l => l.id === id);
-  livro.estrelas = nota;
-
-  mostrarGenero(genero);
- }
+  // SUSPENSE
+  {
+    titulo:"Garota Exemplar",
+    genero:"Suspense",
+    img:"https://covers.openlibrary.org/b/id/8235116-L.jpg",
+    sinopse:"O desaparecimento de uma mulher revela segredos perturbadores sobre seu casamento aparentemente perfeito." 
+  },
+  {
+    titulo:"A Mulher na Janela",
+    genero:"Suspense psicológico",
+    img:"https://covers.openlibrary.org/b/id/9259251-L.jpg",
+    sinopse:"Uma mulher reclusa acredita ter testemunhado um crime, mas ninguém parece acreditar nela." 
   }
-}
+];
 
-// ===== STATUS =====
+const grade = document.getElementById("grade");
 
-function textoStatus(s){
-  if(s==="quero") return "📌 Quero ler";
-  if(s==="lendo") return "📖 Lendo";
-  if(s==="lido") return "✅ Lido";
-}
+livros.forEach(l=>{
+  const div=document.createElement("div");
+  div.className="book";
+  div.innerHTML=`
+    <img src="${l.img}">
+    <div class="info">
+      <div class="titulo">${l.titulo}</div>
+      <div class="genero">${l.genero}</div>
+    </div>`;
+  div.onclick=()=>abrir(l);
+  grade.appendChild(div);
+});
 
-function mudarStatus(e,i){
-  e.stopPropagation();
-
-  const livro = livros[generoAtual][i];
-
-  if(livro.status==="quero") livro.status="lendo";
-  else if(livro.status==="lendo") livro.status="lido";
-  else livro.status="quero";
-
-  localStorage.setItem(generoAtual+i, livro.status);
-
-  mostrarGenero(generoAtual);
-}
-
-// ===== MODAL SINOPSE =====
-
-function abrir(livro){
+function abrir(l){
+  mTitulo.textContent=l.titulo;
+  mTexto.textContent=l.sinopse;
   modal.style.display="flex";
-  modalTitle.innerText = livro.titulo;
-  modalDesc.innerText = livro.sinopse;
 }
 
 function fechar(){
   modal.style.display="none";
 }
-
-// ===== INÍCIO =====
-
-mostrarGenero("Fantasia");
-// ===== VARIÁVEIS =====
-
-let generoAtual = "Fantasia";
-const grid = document.getElementById("grid");
-
-// ===== MOSTRAR LIVROS =====
-
-function mostrarGenero(genero){
-  generoAtual = genero;
-  grid.innerHTML = "";
-
-  livros[genero].forEach((livro,i)=>{
-
-    const salvo = localStorage.getItem(genero+i);
-    if(salvo) livro.status = salvo;
-
-    const card = document.createElement("div");
-    card.className="card";
-
-    card.innerHTML = `
-      <img src="${livro.capa}">
-      <div class="title">${livro.titulo}</div>
-
-      <div class="stars" onclick="avaliar(event,${i})">
-        ${"★".repeat(livro.nota)}${"☆".repeat(5-livro.nota)}
-      </div>
-
-      <div class="status" onclick="mudarStatus(event,${i})">
-        ${textoStatus(livro.status)}
-      </div>
-    `;
-
-    card.onclick = ()=>abrir(livro);
-
-    grid.appendChild(card);
-  });
-}
-
-// ===== AVALIAÇÃO =====
-
-function avaliar(e,i){
-  e.stopPropagation();
-  const nota = prompt("Nota de 1 a 5:");
-  if(nota>=1 && nota<=5){
-    livros[generoAtual][i].nota = nota;
-    mostrarGenero(generoAtual);
-  }
-}
-
-// ===== STATUS =====
-
-function textoStatus(s){
-  if(s==="quero") return "📌 Quero ler";
-  if(s==="lendo") return "📖 Lendo";
-  if(s==="lido") return "✅ Lido";
-}
-
-function mudarStatus(e,i){
-  e.stopPropagation();
-
-  const livro = livros[generoAtual][i];
-
-  if(livro.status==="quero") livro.status="lendo";
-  else if(livro.status==="lendo") livro.status="lido";
-  else livro.status="quero";
-
-  localStorage.setItem(generoAtual+i, livro.status);
-
-  mostrarGenero(generoAtual);
-}
-
-// ===== MODAL SINOPSE =====
-
-function abrir(livro){
-  modal.style.display="flex";
-  modalTitle.innerText=livro.titulo;
-  modalDesc.innerText=livro.sinopse;
-}
-
-function fechar(){
-  modal.style.display="none";
-}
-
-// ===== INÍCIO =====
-
-mostrarGenero("Fantasia");
-
-</script>
-
-</body>
-</html>
+</script></body>
+      </html>
