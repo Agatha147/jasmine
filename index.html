@@ -134,29 +134,162 @@ button{
 
 // ===== LIVROS =====
 
-const livros = {
+const livros = const livros = {
 
-Fantasia: [
-{titulo:"O Senhor dos Anéis",capa:"https://covers.openlibrary.org/b/id/8231856-L.jpg",sinopse:"Um hobbit precisa destruir um anel poderoso para salvar a Terra-média.",nota:0,status:"quero"},
-{titulo:"Harry Potter",capa:"https://covers.openlibrary.org/b/id/7984916-L.jpg",sinopse:"Um garoto descobre que é um bruxo e vai para uma escola de magia.",nota:0,status:"quero"}
-],
+  "Fantasia":[
+    {id:"f1", titulo:"O Hobbit", img:"https://covers.openlibrary.org/b/id/6979861-L.jpg",
+     sinopse:"Bilbo Bolseiro parte numa aventura para recuperar um tesouro guardado por um dragão.", estrelas:0},
 
-Romance: [
-{titulo:"Orgulho e Preconceito",capa:"https://covers.openlibrary.org/b/id/8226191-L.jpg",sinopse:"Elizabeth Bennet enfrenta convenções sociais e o misterioso Sr. Darcy.",nota:0,status:"quero"},
-{titulo:"Como Eu Era Antes de Você",capa:"https://covers.openlibrary.org/b/id/8375041-L.jpg",sinopse:"Uma jovem cuida de um homem tetraplégico e suas vidas mudam.",nota:0,status:"quero"}
-],
+    {id:"f2", titulo:"Harry Potter e a Pedra Filosofal",
+     img:"https://covers.openlibrary.org/b/id/7984916-L.jpg",
+     sinopse:"Um garoto descobre que é bruxo e inicia sua vida na escola de magia.", estrelas:0},
 
-Terror: [
-{titulo:"It — A Coisa",capa:"https://covers.openlibrary.org/b/id/8319251-L.jpg",sinopse:"Uma entidade assume forma de palhaço para caçar crianças.",nota:0,status:"quero"},
-{titulo:"O Iluminado",capa:"https://covers.openlibrary.org/b/id/8235116-L.jpg",sinopse:"Um hotel isolado enlouquece um homem.",nota:0,status:"quero"}
-],
+    {id:"f3", titulo:"O Nome do Vento",
+     img:"https://covers.openlibrary.org/b/id/8231996-L.jpg",
+     sinopse:"Kvothe conta sua própria história, de prodígio a lenda viva.", estrelas:0},
 
-"Ficção Científica": [
-{titulo:"Duna",capa:"https://covers.openlibrary.org/b/id/8108691-L.jpg",sinopse:"Intrigas políticas no planeta deserto Arrakis.",nota:0,status:"quero"},
-{titulo:"Jogos Vorazes",capa:"https://covers.openlibrary.org/b/id/6485581-L.jpg",sinopse:"Reality show mortal com adolescentes.",nota:0,status:"quero"}
-]
+    {id:"f4", titulo:"Eragon",
+     img:"https://covers.openlibrary.org/b/id/8231856-L.jpg",
+     sinopse:"Um jovem encontra um ovo de dragão e entra numa guerra épica.", estrelas:0},
 
-};
+    {id:"f5", titulo:"As Crônicas de Nárnia",
+     img:"https://covers.openlibrary.org/b/id/6979860-L.jpg",
+     sinopse:"Crianças descobrem um mundo mágico escondido dentro de um guarda-roupa.", estrelas:0}
+  ],
+
+  "Romance":[
+    {id:"r1", titulo:"Orgulho e Preconceito",
+     img:"https://covers.openlibrary.org/b/id/8226191-L.jpg",
+     sinopse:"Elizabeth Bennet enfrenta amor, orgulho e convenções sociais.", estrelas:0},
+
+    {id:"r2", titulo:"Como Eu Era Antes de Você",
+     img:"https://covers.openlibrary.org/b/id/8168691-L.jpg",
+     sinopse:"Uma cuidadora muda a vida de um homem tetraplégico.", estrelas:0},
+
+    {id:"r3", titulo:"A Culpa é das Estrelas",
+     img:"https://covers.openlibrary.org/b/id/7269256-L.jpg",
+     sinopse:"Dois adolescentes com câncer se apaixonam intensamente.", estrelas:0},
+
+    {id:"r4", titulo:"PS: Eu Te Amo",
+     img:"https://covers.openlibrary.org/b/id/8235116-L.jpg",
+     sinopse:"Cartas deixadas por um marido morto ajudam sua esposa a seguir em frente.", estrelas:0},
+
+    {id:"r5", titulo:"O Diário de uma Paixão",
+     img:"https://covers.openlibrary.org/b/id/8231995-L.jpg",
+     sinopse:"Uma história de amor que atravessa décadas.", estrelas:0}
+  ],
+
+  "Ficção Científica":[
+    {id:"fc1", titulo:"Duna",
+     img:"https://covers.openlibrary.org/b/id/8108691-L.jpg",
+     sinopse:"Conflitos políticos e místicos em um planeta desértico.", estrelas:0},
+
+    {id:"fc2", titulo:"Jogador Nº1",
+     img:"https://covers.openlibrary.org/b/id/8231852-L.jpg",
+     sinopse:"Uma caça ao tesouro dentro de um mundo virtual.", estrelas:0},
+
+    {id:"fc3", titulo:"Eu, Robô",
+     img:"https://covers.openlibrary.org/b/id/8234140-L.jpg",
+     sinopse:"Contos sobre robôs e as leis da robótica.", estrelas:0},
+
+    {id:"fc4", titulo:"Fundação",
+     img:"https://covers.openlibrary.org/b/id/8231994-L.jpg",
+     sinopse:"Um cientista tenta salvar o conhecimento humano.", estrelas:0},
+
+    {id:"fc5", titulo:"O Guia do Mochileiro das Galáxias",
+     img:"https://covers.openlibrary.org/b/id/7222246-L.jpg",
+     sinopse:"Uma aventura absurdamente divertida pelo espaço.", estrelas:0}
+  ],
+
+  "Suspense":[
+    {id:"s1", titulo:"Garota Exemplar",
+     img:"https://covers.openlibrary.org/b/id/8231992-L.jpg",
+     sinopse:"O desaparecimento de uma mulher revela segredos sombrios.", estrelas:0},
+
+    {id:"s2", titulo:"A Mulher na Janela",
+     img:"https://covers.openlibrary.org/b/id/8231991-L.jpg",
+     sinopse:"Uma mulher agorafóbica acredita ter testemunhado um crime.", estrelas:0},
+
+    {id:"s3", titulo:"O Silêncio dos Inocentes",
+     img:"https://covers.openlibrary.org/b/id/8231990-L.jpg",
+     sinopse:"Uma agente do FBI consulta um assassino canibal para capturar outro.", estrelas:0},
+
+    {id:"s4", titulo:"Antes de Dormir",
+     img:"https://covers.openlibrary.org/b/id/8231989-L.jpg",
+     sinopse:"Uma mulher perde a memória toda vez que dorme.", estrelas:0},
+
+    {id:"s5", titulo:"A Paciente Silenciosa",
+     img:"https://covers.openlibrary.org/b/id/10521258-L.jpg",
+     sinopse:"Uma artista mata o marido e para de falar.", estrelas:0}
+  ],
+
+  "Terror":[
+    {id:"t1", titulo:"It — A Coisa",
+     img:"https://covers.openlibrary.org/b/id/8231988-L.jpg",
+     sinopse:"Uma entidade maligna assume a forma de palhaço.", estrelas:0},
+
+    {id:"t2", titulo:"O Iluminado",
+     img:"https://covers.openlibrary.org/b/id/8231987-L.jpg",
+     sinopse:"Um hotel isolado leva um homem à loucura.", estrelas:0},
+
+    {id:"t3", titulo:"Drácula",
+     img:"https://covers.openlibrary.org/b/id/8231986-L.jpg",
+     sinopse:"O clássico vampiro da literatura.", estrelas:0},
+
+    {id:"t4", titulo:"Frankenstein",
+     img:"https://covers.openlibrary.org/b/id/8231985-L.jpg",
+     sinopse:"Um cientista cria vida e se arrepende.", estrelas:0},
+
+    {id:"t5", titulo:"O Exorcista",
+     img:"https://covers.openlibrary.org/b/id/8231984-L.jpg",
+     sinopse:"Uma garota é possuída por uma entidade demoníaca.", estrelas:0}
+  ],
+
+  "Aventura":[
+    {id:"a1", titulo:"As Aventuras de Tom Sawyer",
+     img:"https://covers.openlibrary.org/b/id/8231983-L.jpg",
+     sinopse:"As travessuras de um garoto às margens do Mississippi.", estrelas:0},
+
+    {id:"a2", titulo:"A Ilha do Tesouro",
+     img:"https://covers.openlibrary.org/b/id/8231982-L.jpg",
+     sinopse:"Piratas, mapas secretos e um tesouro enterrado.", estrelas:0},
+
+    {id:"a3", titulo:"Vinte Mil Léguas Submarinas",
+     img:"https://covers.openlibrary.org/b/id/8231981-L.jpg",
+     sinopse:"Uma viagem extraordinária sob os oceanos.", estrelas:0},
+
+    {id:"a4", titulo:"Viagem ao Centro da Terra",
+     img:"https://covers.openlibrary.org/b/id/8231980-L.jpg",
+     sinopse:"Exploradores descobrem um mundo subterrâneo.", estrelas:0},
+
+    {id:"a5", titulo:"Robinson Crusoé",
+     img:"https://covers.openlibrary.org/b/id/8231979-L.jpg",
+     sinopse:"Um homem sobrevive sozinho em uma ilha deserta.", estrelas:0}
+  ],
+
+  "Juvenil":[
+    {id:"j1", titulo:"Percy Jackson e o Ladrão de Raios",
+     img:"https://covers.openlibrary.org/b/id/8225631-L.jpg",
+     sinopse:"Um garoto descobre ser filho de um deus grego.", estrelas:0},
+
+    {id:"j2", titulo:"Jogos Vorazes",
+     img:"https://covers.openlibrary.org/b/id/8228691-L.jpg",
+     sinopse:"Adolescentes lutam até a morte em um reality show distópico.", estrelas:0},
+
+    {id:"j3", titulo:"Divergente",
+     img:"https://covers.openlibrary.org/b/id/8231978-L.jpg",
+     sinopse:"Uma sociedade dividida em facções é ameaçada por quem não se encaixa.", estrelas:0},
+
+    {id:"j4", titulo:"Maze Runner",
+     img:"https://covers.openlibrary.org/b/id/8231977-L.jpg",
+     sinopse:"Jovens presos em um labirinto mortal tentam escapar.", estrelas:0},
+
+    {id:"j5", titulo:"Extraordinário",
+     img:"https://covers.openlibrary.org/b/id/8231976-L.jpg",
+     sinopse:"Um garoto com deformidade facial enfrenta a escola pela primeira vez.", estrelas:0}
+  ]
+
+     }
 
 // ===== VARIÁVEIS =====
 
