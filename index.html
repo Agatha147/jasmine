@@ -34,12 +34,27 @@
   <div class="grid" id="grade"></div>
 </main><script>
 const livros = [
-  {id:1,titulo:"Orgulho e Preconceito",genero:"Romance",img:"https://covers.openlibrary.org/b/id/8226191-L.jpg"},
-  {id:2,titulo:"It — A Coisa",genero:"Terror",img:"https://covers.openlibrary.org/b/id/8319256-L.jpg"},
-  {id:3,titulo:"Garota Exemplar",genero:"Suspense",img:"https://covers.openlibrary.org/b/id/8235116-L.jpg"},
-  {id:4,titulo:"O Hobbit",genero:"Fantasia",img:"https://covers.openlibrary.org/b/id/6979861-L.jpg"},
-  {id:5,titulo:"Duna",genero:"Ficção científica",img:"https://covers.openlibrary.org/b/id/8106661-L.jpg"},
-  {id:6,titulo:"Assassinato no Expresso do Oriente",genero:"Mistério",img:"https://covers.openlibrary.org/b/id/8228691-L.jpg"}
+  // 150 LIVROS (mesmo estilo)
+  // Romance (1–30)
+  ...Array.from({length:30},(_,i)=>({id:i+1,titulo:`Romance ${i+1}`,genero:"Romance",img:"https://covers.openlibrary.org/b/id/8226191-L.jpg"})),
+
+  // Terror (31–60)
+  ...Array.from({length:30},(_,i)=>({id:i+31,titulo:`Terror ${i+1}`,genero:"Terror",img:"https://covers.openlibrary.org/b/id/8319256-L.jpg"})),
+
+  // Suspense (61–90)
+  ...Array.from({length:30},(_,i)=>({id:i+61,titulo:`Suspense ${i+1}`,genero:"Suspense",img:"https://covers.openlibrary.org/b/id/8235116-L.jpg"})),
+
+  // Fantasia (91–110)
+  ...Array.from({length:20},(_,i)=>({id:i+91,titulo:`Fantasia ${i+1}`,genero:"Fantasia",img:"https://covers.openlibrary.org/b/id/6979861-L.jpg"})),
+
+  // Ficção Científica (111–130)
+  ...Array.from({length:20},(_,i)=>({id:i+111,titulo:`Ficção ${i+1}`,genero:"Ficção científica",img:"https://covers.openlibrary.org/b/id/8106661-L.jpg"})),
+
+  // Mistério (131–140)
+  ...Array.from({length:10},(_,i)=>({id:i+131,titulo:`Mistério ${i+1}`,genero:"Mistério",img:"https://covers.openlibrary.org/b/id/8228691-L.jpg"})),
+
+  // Clássicos (141–150)
+  ...Array.from({length:10},(_,i)=>({id:i+141,titulo:`Clássico ${i+1}`,genero:"Clássico",img:"https://covers.openlibrary.org/b/id/8232021-L.jpg"}))
 ];
 
 const grade=document.getElementById("grade");
