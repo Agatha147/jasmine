@@ -2,90 +2,109 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BookVerso</title>
 
 <style>
+:root{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --accent:#a78bfa;
+  --text:#e2e8f0;
+}
+
 body{
-  font-family: Arial;
   margin:0;
-  background:#0f172a;
-  color:white;
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
 header{
-  background:#020617;
   padding:15px;
   text-align:center;
   font-size:22px;
+  background:#020617;
 }
 
-nav{
+.menu{
   display:flex;
+  gap:8px;
+  padding:12px;
   flex-wrap:wrap;
   justify-content:center;
-  gap:8px;
-  background:#020617;
-  padding:10px;
 }
 
-nav button{
-  background:#1e293b;
-  color:white;
+button{
+  background:var(--accent);
   border:none;
-  padding:8px 14px;
-  border-radius:8px;
+  padding:8px 12px;
+  border-radius:10px;
   cursor:pointer;
 }
 
-main{
-  padding:20px;
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:16px;
+  padding:16px;
 }
 
 .card{
-  background:#020617;
-  border-radius:10px;
+  background:var(--card);
+  border-radius:14px;
   padding:10px;
-  position:relative;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
 }
 
 .card img{
   width:100%;
-  height:240px;
+  height:220px;
   object-fit:cover;
-  border-radius:8px;
+  border-radius:10px;
 }
 
-.titulo{
-  font-size:14px;
+.title{
   margin:8px 0;
+  font-size:14px;
 }
 
-.estrelas span{
-  cursor:pointer;
+.stars{
+  color:#facc15;
   font-size:18px;
 }
 
 .status{
-  width:100%;
+  background:#0f172a;
+  padding:6px;
+  border-radius:8px;
   margin-top:6px;
-}
-
-.btn-quero{
-  position:absolute;
-  right:8px;
-  bottom:8px;
-  background:#020617;
-  border:none;
-  color:white;
-  font-size:18px;
+  font-size:13px;
+  text-align:center;
   cursor:pointer;
 }
 
-.pagina{display:none}
-.ativa{display:grid}
+.modal{
+  position:fixed;
+  inset:0;
+  background:#000a;
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-content{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  width:90%;
+  max-width:400px;
+}
 </style>
 </head>
 
@@ -93,158 +112,139 @@ main{
 
 <header>📚 BookVerso</header>
 
-<nav id="menu"></nav>
+<div class="menu">
+  <button onclick="mostrarGenero('Fantasia')">Fantasia</button>
+  <button onclick="mostrarGenero('Romance')">Romance</button>
+  <button onclick="mostrarGenero('Terror')">Terror</button>
+  <button onclick="mostrarGenero('Ficção Científica')">Ficção Científica</button>
+</div>
 
-<main id="conteudo"></main>
+<div class="grid" id="grid"></div>
+
+<!-- Modal Sinopse -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <button onclick="fechar()">Fechar</button>
+  </div>
+</div>
 
 <script>
-// ====== GÊNEROS ======
-const generos = [
-  "Fantasia",
-  "Romance",
-  "Terror",
-  "Ficção Científica",
-  "Mistério",
-  "Aventura",
-  "Juvenil"
+
+// ===== LIVROS =====
+
+const livros = {
+
+Fantasia: [
+{titulo:"O Senhor dos Anéis",capa:"https://covers.openlibrary.org/b/id/8231856-L.jpg",sinopse:"Um hobbit precisa destruir um anel poderoso para salvar a Terra-média.",nota:0,status:"quero"},
+{titulo:"Harry Potter",capa:"https://covers.openlibrary.org/b/id/7984916-L.jpg",sinopse:"Um garoto descobre que é um bruxo e vai para uma escola de magia.",nota:0,status:"quero"}
+],
+
+Romance: [
+{titulo:"Orgulho e Preconceito",capa:"https://covers.openlibrary.org/b/id/8226191-L.jpg",sinopse:"Elizabeth Bennet enfrenta convenções sociais e o misterioso Sr. Darcy.",nota:0,status:"quero"},
+{titulo:"Como Eu Era Antes de Você",capa:"https://covers.openlibrary.org/b/id/8375041-L.jpg",sinopse:"Uma jovem cuida de um homem tetraplégico e suas vidas mudam.",nota:0,status:"quero"}
+],
+
+Terror: [
+{titulo:"It — A Coisa",capa:"https://covers.openlibrary.org/b/id/8319251-L.jpg",sinopse:"Uma entidade assume forma de palhaço para caçar crianças.",nota:0,status:"quero"},
+{titulo:"O Iluminado",capa:"https://covers.openlibrary.org/b/id/8235116-L.jpg",sinopse:"Um hotel isolado enlouquece um homem.",nota:0,status:"quero"}
+],
+
+"Ficção Científica": [
+{titulo:"Duna",capa:"https://covers.openlibrary.org/b/id/8108691-L.jpg",sinopse:"Intrigas políticas no planeta deserto Arrakis.",nota:0,status:"quero"},
+{titulo:"Jogos Vorazes",capa:"https://covers.openlibrary.org/b/id/6485581-L.jpg",sinopse:"Reality show mortal com adolescentes.",nota:0,status:"quero"}
 ]
 
-// ====== GERAR 150 LIVROS ======
-const livros = {}
+};
 
-let total = 0
+// ===== VARIÁVEIS =====
 
-for (let g of generos){
-  livros[g] = []
+let generoAtual = "Fantasia";
+const grid = document.getElementById("grid");
 
-  for (let i=1;i<=22;i++){   // 7x22 ≈ 154 livros
-    total++
+// ===== MOSTRAR LIVROS =====
 
-    livros[g].push({
-      id:`${g}-${i}`,
-      titulo:`Livro ${total} — ${g}`,
-      img:"https://via.placeholder.com/150x240?text=Livro",
-      estrelas:0,
-      status:"nenhum"
-    })
+function mostrarGenero(genero){
+  generoAtual = genero;
+  grid.innerHTML = "";
+
+  livros[genero].forEach((livro,i)=>{
+
+    const salvo = localStorage.getItem(genero+i);
+    if(salvo) livro.status = salvo;
+
+    const card = document.createElement("div");
+    card.className="card";
+
+    card.innerHTML = `
+      <img src="${livro.capa}">
+      <div class="title">${livro.titulo}</div>
+
+      <div class="stars" onclick="avaliar(event,${i})">
+        ${"★".repeat(livro.nota)}${"☆".repeat(5-livro.nota)}
+      </div>
+
+      <div class="status" onclick="mudarStatus(event,${i})">
+        ${textoStatus(livro.status)}
+      </div>
+    `;
+
+    card.onclick = ()=>abrir(livro);
+
+    grid.appendChild(card);
+  });
+}
+
+// ===== AVALIAÇÃO =====
+
+function avaliar(e,i){
+  e.stopPropagation();
+  const nota = prompt("Nota de 1 a 5:");
+  if(nota>=1 && nota<=5){
+    livros[generoAtual][i].nota = nota;
+    mostrarGenero(generoAtual);
   }
 }
 
-// ====== LISTAS ======
-const listas = {
-  quero:[],
-  lendo:[],
-  lido:[]
+// ===== STATUS =====
+
+function textoStatus(s){
+  if(s==="quero") return "📌 Quero ler";
+  if(s==="lendo") return "📖 Lendo";
+  if(s==="lido") return "✅ Lido";
 }
 
-// ====== MENU ======
-const menu = document.getElementById("menu")
+function mudarStatus(e,i){
+  e.stopPropagation();
 
-generos.forEach(g=>{
-  const b=document.createElement("button")
-  b.textContent=g
-  b.onclick=()=>mostrar(g)
-  menu.appendChild(b)
-})
+  const livro = livros[generoAtual][i];
 
-const btnEstante=document.createElement("button")
-btnEstante.textContent="📖 Minha Estante"
-btnEstante.onclick=()=>mostrar("estante")
-menu.appendChild(btnEstante)
+  if(livro.status==="quero") livro.status="lendo";
+  else if(livro.status==="lendo") livro.status="lido";
+  else livro.status="quero";
 
-// ====== MOSTRAR PÁGINA ======
-function mostrar(genero){
+  localStorage.setItem(generoAtual+i, livro.status);
 
-  conteudo.innerHTML=""
-
-  if(genero==="estante"){
-    mostrarEstante()
-    return
-  }
-
-  livros[genero].forEach(l=>{
-    conteudo.appendChild(criarCard(l))
-  })
+  mostrarGenero(generoAtual);
 }
 
-// ====== CARD ======
-function criarCard(livro){
+// ===== MODAL SINOPSE =====
 
-  const card=document.createElement("div")
-  card.className="card"
-
-  card.innerHTML=`
-    <img src="${livro.img}">
-    <div class="titulo">${livro.titulo}</div>
-    <div class="estrelas">
-      ${[1,2,3,4,5].map(n=>
-        `<span onclick="avaliar('${livro.id}',${n})">★</span>`
-      ).join("")}
-    </div>
-
-    <select class="status"
-      onchange="mudarStatus('${livro.id}',this.value)">
-      <option value="nenhum">Status</option>
-      <option value="quero">Quero ler</option>
-      <option value="lendo">Lendo</option>
-      <option value="lido">Lido</option>
-    </select>
-
-    <button class="btn-quero"
-      onclick="addQuero('${livro.id}')">＋</button>
-  `
-
-  return card
+function abrir(livro){
+  modal.style.display="flex";
+  modalTitle.innerText=livro.titulo;
+  modalDesc.innerText=livro.sinopse;
 }
 
-// ====== AVALIAÇÃO ======
-function avaliar(id,n){
-  for(let g in livros){
-    const l = livros[g].find(x=>x.id===id)
-    if(l){ l.estrelas=n }
-  }
+function fechar(){
+  modal.style.display="none";
 }
 
-// ====== STATUS ======
-function mudarStatus(id,status){
+// ===== INÍCIO =====
 
-  for(let k in listas){
-    listas[k]=listas[k].filter(x=>x!==id)
-  }
+mostrarGenero("Fantasia");
 
-  if(status!=="nenhum"){
-    listas[status].push(id)
-  }
-}
-
-// ====== BOTÃO QUERO LER ======
-function addQuero(id){
-  mudarStatus(id,"quero")
-  alert("Adicionado a Quero Ler 📚")
-}
-
-// ====== ESTANTE ======
-function mostrarEstante(){
-
-  conteudo.innerHTML=""
-
-  for(let tipo in listas){
-
-    const h=document.createElement("h2")
-    h.textContent=tipo.toUpperCase()
-    conteudo.appendChild(h)
-
-    listas[tipo].forEach(id=>{
-      for(let g in livros){
-        const l=livros[g].find(x=>x.id===id)
-        if(l) conteudo.appendChild(criarCard(l))
-      }
-    })
-  }
-}
-
-// ====== INICIAL ======
-mostrar(generos[0])
 </script>
 
 </body>
