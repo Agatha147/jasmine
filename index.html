@@ -177,45 +177,41 @@ const modalDesc = document.getElementById("modalDesc");
 
 // ===== MOSTRAR LIVROS =====
 
-function mostrarGenero(genero){
-  generoAtual = genero;
-  grid.innerHTML = "";
+function mostrarGenero(genero) {
+  const container = document.getElementById("listaLivros");
+  container.innerHTML = "";
 
-  livros[genero].forEach((livro,i)=>{
-
-    const salvo = localStorage.getItem(genero+i);
-    if(salvo) livro.status = salvo;
+  livros[genero].forEach(livro => {
 
     const card = document.createElement("div");
-    card.className="card";
+    card.className = "card";
 
     card.innerHTML = `
-      <img src="${livro.capa}">
-      <div class="title">${livro.titulo}</div>
+      <img src="${livro.img}" alt="${livro.titulo}">
+      <h3>${livro.titulo}</h3>
 
-      <div class="stars" onclick="avaliar(event,${i})">
-        ${"★".repeat(livro.nota)}${"☆".repeat(5-livro.nota)}
-      </div>
+      <p class="sinopse">${livro.sinopse}</p>
 
-      <div class="status" onclick="mudarStatus(event,${i})">
-        ${textoStatus(livro.status)}
+      <div class="estrelas">
+        ${[1,2,3,4,5].map(n =>
+          `<span onclick="avaliar('${genero}','${livro.id}',${n})">
+             ${n <= livro.estrelas ? "★" : "☆"}
+           </span>`
+        ).join("")}
       </div>
     `;
 
-    card.onclick = ()=>abrir(livro);
-
-    grid.appendChild(card);
+    container.appendChild(card);
   });
 }
-
 // ===== AVALIAÇÃO =====
 
-function avaliar(e,i){
-  e.stopPropagation();
-  const nota = prompt("Nota de 1 a 5:");
-  if(nota>=1 && nota<=5){
-    livros[generoAtual][i].nota = Number(nota);
-    mostrarGenero(generoAtual);
+function avaliar(genero, id, nota) {
+  const livro = livros[genero].find(l => l.id === id);
+  livro.estrelas = nota;
+
+  mostrarGenero(genero);
+ }
   }
 }
 
