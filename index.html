@@ -1,109 +1,89 @@
-   
-      <!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BookVerso — Romance • Terror • Suspense</title>
+<title>BookVerso — Biblioteca</title>
 <style>
   :root{
-    --bg:#121212;
-    --card:#1e1e1e;
-    --text:#f1f1f1;
-    --accent:#e11d48; /* vermelho dramático */
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#1f2937;
+    --accent:#7c9cff;
+    --border:#e5e7eb;
+    --star:#fbbf24;
   }
   body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-  header{background:#1a1a1a;padding:22px;text-align:center}
+  header{background:#ffffff;padding:22px;text-align:center;border-bottom:1px solid var(--border)}
   h1{margin:0;color:var(--accent)}
-  .sub{opacity:.85;font-size:14px}
+  .sub{opacity:.8;font-size:14px}
   main{max-width:1100px;margin:auto;padding:20px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
-  .book{background:var(--card);border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s}
-  .book:hover{transform:translateY(-5px) scale(1.02)}
+  .book{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 6px 18px rgba(0,0,0,.04)}
   .book img{width:100%;height:240px;object-fit:cover}
   .info{padding:12px}
   .titulo{font-weight:bold;font-size:15px}
-  .genero{font-size:12px;opacity:.75;margin-top:4px}/* Modal */ .modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;padding:20px} .modal-box{background:var(--card);max-width:520px;border-radius:14px;padding:20px} .modal-box h2{margin-top:0;color:var(--accent)} .fechar{margin-top:14px;background:var(--accent);border:none;color:#fff;padding:10px 16px;border-radius:8px;cursor:pointer} </style>
+  .genero{font-size:12px;opacity:.7;margin-top:4px}.acoes{margin-top:8px;display:flex;flex-direction:column;gap:6px} select,button{font-size:12px;padding:6px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer}
+
+.stars{display:flex;gap:2px;cursor:pointer} .star{font-size:16px;color:#d1d5db} .star.active{color:var(--star)} </style>
 
 </head>
 <body><header>
   <h1>BookVerso</h1>
-  <div class="sub">Romance • Terror • Suspense</div>
+  <div class="sub">Sua biblioteca pessoal (organizada melhor que muita estante real)</div>
 </header><main>
   <div class="grid" id="grade"></div>
-</main><div class="modal" id="modal">
-  <div class="modal-box">
-    <h2 id="mTitulo"></h2>
-    <p id="mTexto"></p>
-    <button class="fechar" onclick="fechar()">Fechar</button>
-  </div>
-</div><script>
+</main><script>
 const livros = [
-  // ROMANCE
-  {
-    titulo:"Como Eu Era Antes de Você",
-    genero:"Romance",
-    img:"https://covers.openlibrary.org/b/id/8155416-L.jpg",
-    sinopse:"Louisa começa a trabalhar como cuidadora de um homem tetraplégico e ambos transformam profundamente a vida um do outro." 
-  },
-  {
-    titulo:"A Culpa é das Estrelas",
-    genero:"Romance",
-    img:"https://covers.openlibrary.org/b/id/7267846-L.jpg",
-    sinopse:"Dois adolescentes com câncer se apaixonam e vivem uma história intensa sobre amor, dor e significado." 
-  },
-
-  // TERROR
-  {
-    titulo:"It — A Coisa",
-    genero:"Terror",
-    img:"https://covers.openlibrary.org/b/id/8319256-L.jpg",
-    sinopse:"Um grupo de crianças enfrenta uma entidade maligna que assume a forma dos seus piores medos." 
-  },
-  {
-    titulo:"O Iluminado",
-    genero:"Terror psicológico",
-    img:"https://covers.openlibrary.org/b/id/8231996-L.jpg",
-    sinopse:"Isolado em um hotel durante o inverno, um homem enlouquece sob a influência de forças sobrenaturais." 
-  },
-
-  // SUSPENSE
-  {
-    titulo:"Garota Exemplar",
-    genero:"Suspense",
-    img:"https://covers.openlibrary.org/b/id/8235116-L.jpg",
-    sinopse:"O desaparecimento de uma mulher revela segredos perturbadores sobre seu casamento aparentemente perfeito." 
-  },
-  {
-    titulo:"A Mulher na Janela",
-    genero:"Suspense psicológico",
-    img:"https://covers.openlibrary.org/b/id/9259251-L.jpg",
-    sinopse:"Uma mulher reclusa acredita ter testemunhado um crime, mas ninguém parece acreditar nela." 
-  }
+  {id:1,titulo:"Orgulho e Preconceito",genero:"Romance",img:"https://covers.openlibrary.org/b/id/8226191-L.jpg"},
+  {id:2,titulo:"It — A Coisa",genero:"Terror",img:"https://covers.openlibrary.org/b/id/8319256-L.jpg"},
+  {id:3,titulo:"Garota Exemplar",genero:"Suspense",img:"https://covers.openlibrary.org/b/id/8235116-L.jpg"},
+  {id:4,titulo:"O Hobbit",genero:"Fantasia",img:"https://covers.openlibrary.org/b/id/6979861-L.jpg"},
+  {id:5,titulo:"Duna",genero:"Ficção científica",img:"https://covers.openlibrary.org/b/id/8106661-L.jpg"},
+  {id:6,titulo:"Assassinato no Expresso do Oriente",genero:"Mistério",img:"https://covers.openlibrary.org/b/id/8228691-L.jpg"}
 ];
 
-const grade = document.getElementById("grade");
+const grade=document.getElementById("grade");
 
 livros.forEach(l=>{
   const div=document.createElement("div");
   div.className="book";
+
+  const estrelas = Array.from({length:5}).map((_,i)=>
+    `<span class="star" data-i="${i}">★</span>`
+  ).join("");
+
   div.innerHTML=`
     <img src="${l.img}">
     <div class="info">
       <div class="titulo">${l.titulo}</div>
       <div class="genero">${l.genero}</div>
+
+      <div class="acoes">
+        <div class="stars" data-id="${l.id}">${estrelas}</div>
+
+        <select data-id="${l.id}">
+          <option value="quero">Quero ler</option>
+          <option value="lendo">Lendo</option>
+          <option value="lido">Lido</option>
+        </select>
+      </div>
     </div>`;
-  div.onclick=()=>abrir(l);
+
   grade.appendChild(div);
 });
 
-function abrir(l){
-  mTitulo.textContent=l.titulo;
-  mTexto.textContent=l.sinopse;
-  modal.style.display="flex";
-}
+// Avaliação por estrelas
 
-function fechar(){
-  modal.style.display="none";
-}
+document.querySelectorAll(".stars").forEach(box=>{
+  const stars=box.querySelectorAll(".star");
+  stars.forEach(star=>{
+    star.onclick=()=>{
+      const i=star.dataset.i;
+      stars.forEach((s,idx)=>{
+        s.classList.toggle("active", idx<=i);
+      });
+    };
+  });
+});
 </script></body>
-      </html>
+</html>
